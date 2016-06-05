@@ -9,7 +9,7 @@ namespace ERP
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<BookContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BookContext>());
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);

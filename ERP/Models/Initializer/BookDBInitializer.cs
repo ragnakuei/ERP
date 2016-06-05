@@ -2,7 +2,7 @@
 
 namespace ERP.Models.Initializer
 {
-    public class BookDBInitializer : System.Data.Entity.DropCreateDatabaseAlways<BookContext>
+    public class BookDBInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<BookContext>
     {
         protected override void Seed(BookContext context)
         {

@@ -28,12 +28,22 @@ namespace ERP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Books.Find(id);
-            if (book == null)
+            var books = db.Books.Where(b => b.id == id).Select(b => b);
+            if(books.Count() ==1)
             {
-                return HttpNotFound();
+                return View(books.First());
             }
-            return View(book);
+            else
+            {
+                return RedirectToAction("Index");
+            }
+
+            //Book book = db.Books.Find(id, rowid);
+            //if (book == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(books);
         }
 
         // GET: Books/Create
@@ -47,7 +57,7 @@ namespace ERP.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name")] Book book)
+        public ActionResult Create([Bind(Include = "id,rowid,name")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -60,13 +70,13 @@ namespace ERP.Controllers
         }
 
         // GET: Books/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, Guid? rowid)
         {
-            if (id == null)
+            if (id == null || rowid == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Books.Find(id);
+            Book book = db.Books.Find(id, rowid);
             if (book == null)
             {
                 return HttpNotFound();
@@ -79,7 +89,7 @@ namespace ERP.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name")] Book book)
+        public ActionResult Edit([Bind(Include = "id,rowid,name")] Book book)
         {
             if (ModelState.IsValid)
             {
@@ -91,13 +101,13 @@ namespace ERP.Controllers
         }
 
         // GET: Books/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, Guid? rowid)
         {
-            if (id == null)
+            if (id == null || rowid == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Books.Find(id);
+            Book book = db.Books.Find(id, rowid);
             if (book == null)
             {
                 return HttpNotFound();
@@ -108,9 +118,9 @@ namespace ERP.Controllers
         // POST: Books/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, Guid rowid)
         {
-            Book book = db.Books.Find(id);
+            Book book = db.Books.Find(id, rowid);
             db.Books.Remove(book);
             db.SaveChanges();
             return RedirectToAction("Index");
