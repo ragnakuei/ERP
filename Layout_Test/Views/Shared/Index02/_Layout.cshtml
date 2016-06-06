@@ -1,0 +1,372 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+
+    <meta charset="utf-8" />
+    <meta http-equiv="content-language" content="zh-Hant-TW" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>@(ViewData["title"].ToString() + ViewData["site_name"].ToString())</title>
+    <meta name="twitter:title" property="og:title" itemprop="name" content="@ViewData["title"]" />
+    <meta name="parsely-title" itemprop="headline" data-ephemeral="true" content="@ViewData["title"]" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" property="og:description" itemprop="description" content="@ViewData["meta_description"]" />
+    <meta name="twitter:description" content="@ViewData["meta_description"]" />
+    <meta name="keywords" itemprop="keywords" content="@ViewData["keywords"]" />
+    <meta name="parsely-tags" property="article:tag" data-ephemeral="true" content="@ViewData["keywords"]" />
+    <meta name="lastmod" property="article:modified_time" itemprop="dateModified" content=@ViewData["lastmod"] />
+    <meta name="pubdate" property="article:published_time" itemprop="datePublished" content=@ViewData["pubdate"] />
+    <meta name="source" content="@ViewData["site_name"]" />
+    <meta name="copyright" content="@ViewData["site_name"]" />
+    <meta name="author" content="@ViewData["site_name"]" />
+    <meta name="medium" content=@ViewData["medium"] />
+    <meta name="twitter:site" property="twitter:creator" content="@("@")tw_chinatimes" />
+    <meta name="twitter:card" content="@ViewData["twitter:card"]" />
+    <meta name="twitter:url" property="og:url" itemprop="url" content="@(ViewData["main_url"].ToString()+ViewData["channel.ToString()"])/" />
+    <meta name="parsely-link" data-ephemeral="true" content="@(ViewData["main_url"].ToString()+ViewData["channel.ToString()"])/" />
+    <meta name="application-name" content="@ViewData["title"]" />
+    <meta name="msapplication-tooltip" content="@ViewData["title"]" />
+    <meta name="msapplication-starturl" content="@(ViewData["main_url"].ToString()+ViewData["channel.ToString()"])/" />
+    <meta name="apple-mobile-web-app-title" content="@ViewData["title"]" />
+    <meta name="apple-mobile-web-app-capable" content="no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta property="fb:admins" content="100009177684541" />
+    <meta property="fb:app_id" content="1379575469016080" />
+    <meta property="article:author" content="@ViewData["fb_url"]" />
+    <meta property="article:publisher" content="@ViewData["fb_url"]" />
+    <meta name="msapplication-TileImage" content="@ViewData["meta_image"]" />
+    <meta name="parsely-image-url" property="twitter:image" data-ephemeral="true" content="@ViewData["meta_image"]" />
+    <link rel="image_src" type="image/jpeg" href="@ViewData["meta_image"]" />
+    <meta name="image" property="og:image" itemprop="image" content="@ViewData["meta_image"]" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="635" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:site_name" content="@ViewData["site_name"]" />
+    <link rel="author" href="@ViewData["chinatimes_google_plus"]" />
+    <link rel="publisher" href="@ViewData["chinatimes_google_plus"]" />
+    <link rel="alternate" hreflang="zh-Hant" href="@(ViewData["main_url"].ToString()+ViewData["channel.ToString()"])/" />
+    <link rel="alternate" hreflang="zh-Hans" href="@ViewData["main_url"]cn/@ViewData["channel"]/" />
+    <link rel="canonical" href="@(ViewData["main_url"].ToString()+ViewData["channel.ToString()"])/" />
+    <link rel="apple-touch-icon-precomposed" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/apple-touch-icon-57x57-precomposed.png " />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/apple-touch-icon-60x60-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/apple-touch-icon-72x72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/apple-touch-icon-76x76-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/apple-touch-icon-114x114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/apple-touch-icon-120x120-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/apple-touch-icon-144x144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/apple-touch-icon-152x152-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/apple-touch-icon-180x180-precomposed.png" />
+    <link rel="icon" sizes="192x192" href="@(ViewData["cache_image_url"].ToString()+ViewData["channel"].ToString())/touch-icon-192x192.png">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="alternate" type="application/rss+xml" title="即時[RSS]" href="@(ViewData["main_url"].ToString()+"rss/"+@ViewData["channel"].ToString()).xml" />
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js?20130130"></script>
+    <![endif]-->
+    <!--讓IE9之前的版本支援HTML5的新元素-->
+    <link rel="stylesheet" href="http://cache.chinatimes.com/css-main/index_rwd.css">
+    <link rel="stylesheet" href="http://cache.chinatimes.com/css-main/jquery-ui-1.10.4.min.css" />
+    <script type="text/javascript" src="http://cache.chinatimes.com/Scripts/jquery-1.7.1.min.js?20130130"></script>
+    <script type="text/javascript" src="http://cache.chinatimes.com/Scripts/content-later-handle.js?20130305"></script>
+    <script src="http://cache.chinatimes.com/Scripts/jquery-ui-1.10.4.min.js"></script>
+    <script type="text/javascript" src="http://cache.chinatimes.com/Scripts/common-scripts.min.js?20151014"></script>
+
+    <!-- Begin comScore Tag -->
+    <script>
+        var _comscore = _comscore || [];
+        _comscore.push({
+            c1: "2", c2: "9457284",
+            options: {
+                url_append: "comscorekw=news"
+            }
+        });
+        (function () {
+            var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+            s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+            el.parentNode.insertBefore(s, el);
+        })();
+    </script>
+    <noscript>
+        <img src="http://b.scorecardresearch.com/p?c1=2&c2=9457284&cv=2.0&cj=1" />
+    </noscript>
+    <!-- End comScore Tag -->
+    <script type="application/ld+json">
+        {
+        "@("@")context": "http://schema.org",
+        "@("@")type": "Website",
+        "headline": "@ViewData["title"]",
+        "url": "@(ViewData["main_url"].ToString() + ViewData["channel.ToString()"])/",
+        "thumbnailUrl": ""@ViewData["main_url"]images/chinatimes_logo.png",
+        "creator": "@ViewData["site_name"]",
+        "logo": "@ViewData["main_url"]images/chinatimes_logo.png",
+        "image": ["@ViewData["meta_image"]"],
+        "datePublished": "@(ViewData["pubdate"].ToString().Substring(0, 19))",
+        "keywords": ["即時"," 最新"," 行動"," 爆料"," 樂透"," 威力彩"," 彩券"," 頭彩"," 突發"," 好看"," 轉播"," 速報"," 快訊"]
+        }
+    </script>
+    <!-- Chinatimes - TW - RTA script -->
+    <script type='text/javascript'>
+        var crtg_nid = '4132';
+        var crtg_cookiename = 'crtg_rta';
+        var crtg_varname = 'crtg_content';
+        function crtg_getCookie(c_name) { var i, x, y, ARRCookies = document.cookie.split(";"); for (i = 0; i < ARRCookies.length; i++) { x = ARRCookies[i].substr(0, ARRCookies[i].indexOf("=")); y = ARRCookies[i].substr(ARRCookies[i].indexOf("=") + 1); x = x.replace(/^\s+|\s+$/g, ""); if (x == c_name) { return unescape(y); } } return ''; }
+        var crtg_content = crtg_getCookie(crtg_cookiename);
+        var crtg_rnd = Math.floor(Math.random() * 99999999999);
+        (function () {
+            var crtg_url = location.protocol + '//rtax.criteo.com/delivery/rta/rta.js?netId=' + escape(crtg_nid);
+            crtg_url += '&cookieName=' + escape(crtg_cookiename);
+            crtg_url += '&rnd=' + crtg_rnd;
+            crtg_url += '&varName=' + escape(crtg_varname);
+            var crtg_script = document.createElement('script'); crtg_script.type = 'text/javascript'; crtg_script.src = crtg_url; crtg_script.async = true;
+            if (document.getElementsByTagName("head").length > 0) document.getElementsByTagName("head")[0].appendChild(crtg_script);
+            else if (document.getElementsByTagName("body").length > 0) document.getElementsByTagName("body")[0].appendChild(crtg_script);
+        })();
+    </script>
+    <script type='text/javascript'>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function () {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+    '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+    </script>
+    <script type='text/javascript'>
+        googletag.cmd.push(function () {
+
+            if (!isRWD) {
+                googletag.defineSlot('/81206261/Chinatimes_@ViewData["channel"]_Directory_ADBarHead_970x90', [[728, 90], [970, 90]], 'div-dfp-BarHead').addService(googletag.pubads());
+                googletag.defineSlot('/81206261/Chinatimes_@ViewData["channel"]_Directory_ADStandardMiddleRight_300X250', [300, 250], 'div-dfp-StandardMiddleRight').addService(googletag.pubads());
+                googletag.defineSlot('/81206261/Chinatimes_@ViewData["channel"]_Directory_ADStandardBottomRight_300X250', [300, 250], 'div-dfp-StandardBottomRight').addService(googletag.pubads());
+                googletag.defineSlot('/81206261/Chinatimes_@ViewData["channel"]_Directory_ADStraightLeft_120X600', [120, 600], 'div-dfp-StraightLeft').addService(googletag.pubads());
+                googletag.defineSlot('/81206261/Chinatimes_@ViewData["channel"]_Directory_ADStraightHugeRight_300X600', [300, 600], 'div-dfp-StraightHugeRight').addService(googletag.pubads());
+            }
+
+
+            var crtg_split = (crtg_content || '').split(';');
+            var pubads = googletag.pubads();
+            for (var i = 1; i < crtg_split.length; i++) {
+                pubads.setTargeting("" + (crtg_split[i - 1].split('='))[0] + "", "" + (crtg_split[i - 1].split('='))[1] + "");
+            }
+            googletag.pubads().enableAsyncRendering();
+            googletag.pubads().collapseEmptyDivs();
+            googletag.enableServices();
+
+        });
+        var ctmid = "@ViewData["channel"]";
+        var ctwebsub = "";
+    </script>
+
+</head>
+<body id="page">
+
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-9FG3" height="0" width="0"
+                style="display: none; visibility: hidden"></iframe>
+    </noscript>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-9FG3');
+    </script>
+    <!-- End Google Tag Manager --><!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MWBSFZ" height="0" width="0"
+                style="display: none; visibility: hidden"></iframe>
+    </noscript>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+    '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MWBSFZ');</script>
+    <!-- End Google Tag Manager -->
+    <div class="wrapper">
+
+        @{Html.RenderPartial("/Views/Shared/Index02/_header_partial.cshtml");}
+        @{Html.RenderPartial("/Views/Shared/Index02/_nav_partial.cshtml");}
+
+        <script type="text/javascript">
+
+            ctShowMenu();
+
+            if ($(window).width() < 768) {
+                tosetrwdmenuclick()
+            }
+        </script>
+        <div class="ad_72890_box stack">
+            <div class="ad_72890">
+                <div id="banner728x90" class="banner-728x90">
+                    <div id='div-dfp-BarHead'>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--page_container-s-->
+        <div class="page_container stack clear-fix @ViewData["channel"]">
+            <article>
+                @{Html.RenderPartial("/Views/Shared/Index02/_breadcrumb_partial.cshtml");}
+                @RenderBody()
+
+                <section class="rl_box">
+                    <div class="title">
+                        現正發燒關鍵字
+                    </div>
+
+                    <div id="WallBox" style="width: 100%; height: 200px; margin: 0 auto;">
+                        <div id="WallArea" style="width: 645px; height: 200px;">
+                        </div>
+                    </div>
+
+                    <script src="http://cache.chinatimes.com/Scripts/DynamicWall.min.js?20140110" type="text/javascript"
+                            defer></script>
+                    <script type="text/javascript">
+                        $(function () {
+                            var sss = new DynamicWall();
+                            sss.SetTarget("WallArea");
+                            sss.SetColumnAndRow(3, 2);
+                            sss.SetSource(GetUrl_Cn("/Search/GetJson"), "word", "url");
+                            sss.Start();
+                        });
+                    </script>
+                </section>
+                <section class="hotnews_list"></section>
+                <script type="text/javascript">
+                    var datas = { 'CategoryID': 2604 }
+                    var myurl = GetUrl_Cn('/Hotnews/Hot');
+                    AjaxGetHots(myurl, datas);
+                </script>
+
+            </article>
+
+            @{Html.RenderPartial("/Views/Shared/Index02/_aside_partial.cshtml");}
+
+            <div id='div-dfp-StraightLeft' class="googlead_d_120600" style='display: none'>
+            </div>
+            <div id='div-dfp-StraightRight' class="googlead_g_120600" style='display: none'>
+            </div>
+        </div>
+        <!--page_container-e--><!--something area start-->
+        <div class="stack">
+            <div class="gototop">
+                <a href="#top" class="clear-fix"><span class="icon_16x16"></span>Top</a>
+            </div>
+        </div>
+        <!--something area end-->
+
+        <div class="stack googlead_c_97090">
+            <ins class="adsbygoogle" style="display: inline-block; width: 970px; height: 90px"
+                 data-ad-client="ca-pub-3165442964443939" data-ad-slot="5306076008"></ins>
+            <script>
+                if (!isRWD) {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                }
+            </script>
+        </div>
+        <input type="hidden" id="pcount" name="pcount" value="1">
+
+        <script type="text/javascript" src="http://cache.chinatimes.com/Scripts/bennerad.min.js"></script>
+        @{Html.RenderPartial("/Views/Shared/Index02/_social_idxbox_partial.cshtml");}
+
+        @{Html.RenderPartial("/Views/Shared/Index02/_footer_partial.cshtml");}
+
+        <script src="http://cache.chinatimes.com/Scripts/front-end-specialized.js?20140809" type="text/javascript"
+                defer></script>
+        <script type="text/javascript" src="https://www.likr.com.tw/pushEndPoint/js/HODoWebPush.js"></script>
+        <script type="text/javascript">
+            web_id = "chinatimes";
+            button = true;
+            web_push_start(web_id, button);
+        </script>
+    </div>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script type="text/javascript" src="http://cache.chinatimes.com/Scripts/user.min.js?20150915"></script>
+    <script>
+        MemberTrace();
+        $(function () {
+
+            if (!isRWD) {
+
+                googletag.cmd.push(function () {
+                    googletag.display('div-dfp-BarHead');
+                    googletag.display('div-dfp-Straight');
+                    googletag.display('div-dfp-StandardMiddleRight');
+                    googletag.display('div-dfp-StandardBottomRight');
+                    googletag.display('div-dfp-StraightHugeRight');
+                    googletag.display('div-dfp-StraightHugeRight2');
+                    googletag.display('div-dfp-StraightHugeRight3');
+                    googletag.display('div-dfp-Travel01');
+                    googletag.display('div-dfp-Travel02');
+                    googletag.display('div-dfp-StraightLeft');
+                    googletag.display('div-dfp-StraightRight');
+                    googletag.display('div-dfp-BarBottom');
+                    googletag.display('div-dfp-BarContentTop');
+                    googletag.display('div-dfp-ContentBottom300x250');
+                    googletag.display('div-dfp-BelowContnet');
+
+                });
+            } else {
+                googletag.cmd.push(function () {
+                    googletag.cmd.push(function () { googletag.display('div-dfp-RWD300x100'); });
+                    googletag.cmd.push(function () { googletag.display('div-dfp-RWD300x250'); });
+                    googletag.cmd.push(function () { googletag.display('div-dfp-RWD300x250-1'); });
+                    googletag.cmd.push(function () { googletag.display('div-dfp-RWD300x250-2'); });
+                    googletag.cmd.push(function () { googletag.display('div-dfp-RWDFloater'); });
+
+                });
+            }
+        });
+    </script>
+    <script src="http://cache.chinatimes.com/Scripts/refresh.min.js?20131212" type="text/javascript"
+            defer></script>
+    <script type="text/javascript">
+        $(function () {
+            var r = new wwwRefresh();
+            r.SetDelaySec(180);
+            r.Start();
+        });
+    </script>
+
+    <!-- FaceBook Code Start-->
+    <div id="fb-root">
+    </div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5&appId=1379575469016080";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- FaceBook Code End-->
+    <script type="text/javascript">
+        var disqus_shortname = 'chinatimes-news';
+
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+</body>
+</html>

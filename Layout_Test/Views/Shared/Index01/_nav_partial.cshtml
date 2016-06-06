@@ -1,0 +1,312 @@
+﻿
+<script type="text/javascript">
+            var ctrwdArr = new Array("focus", "@ViewData["channel"]", "newspapers", "star", "sports", "photo-app", "ivoting", "newsblog", "mag", "tv", "money", "event", "armament", "chinese", "world");
+            function rwdmenu() {
+                var ctrwdcss2 = "";
+                var ctrwdcss = $('#menulist').attr("class");
+                $(".search_view").hide();
+                if (ctrwdcss.indexOf(" on") > 0) ctrwdcss2 = ctrwdcss.replace(" on", "");
+                else ctrwdcss2 = ctrwdcss + " on";
+                $('#menulist').attr('class', ctrwdcss2);
+            }
+
+            function rwdsearch() {
+                if ($(".search_view").css('display') == "none") { $(".search_view").show(); var ctrwdcss2 = "menulist clear-fix"; $('#menulist').attr('class', ctrwdcss2); }
+                else { $(".search_view").hide(); }
+            }
+            function ctShowMenu() {
+                if (ctmid != "") {
+                    var ctmidok = "#menu_" + ctmid;
+                    var ctmcss = "menu " + ctmid + " sub clear-fix on";
+                    $(ctmidok).attr('class', ctmcss);
+
+                }
+            }
+
+            function tosetrwdmenuclick() {
+
+                var ctrwdid = "";
+                var ctrwdfid = "";
+
+                for (var ctrwdi = 0; ctrwdi < ctrwdArr.length; ctrwdi++) {
+                    ctrwdid = ctrwdArr[ctrwdi];
+                    ctrwdfid = "#menu_" + ctrwdid;
+
+
+                    if ($(ctrwdfid).children("a").attr('href2') == undefined) $(ctrwdfid).children("a").attr('href2', $(ctrwdfid).children("a").attr('href'));
+                    $(ctrwdfid).children("a").removeAttr('href');
+                    $(ctrwdfid).children("a").click(function () {
+
+
+                        ToChangeRwdMenu($(this));
+                    })
+                }
+
+            }
+
+
+            function ToChangeRwdMenu(obj) {
+                var isRWD2 = $(window).width() < 768;
+                if (isRWD2) {
+                    var ctrwdid = "";
+                    var ctrwdfid = "";
+                    var ctrwdfcss = "";
+                    var ctrwdfidnow = "#" + obj.parent().attr('id');
+
+                    for (var ctrwdi = 0; ctrwdi < ctrwdArr.length; ctrwdi++) {
+                        ctrwdid = ctrwdArr[ctrwdi];
+                        ctrwdfid = "#menu_" + ctrwdid;
+                        if (ctrwdfid != ctrwdfidnow) {
+                            ctrwdfcss = "menu " + ctrwdid + " sub clear-fix";
+                            $(ctrwdfid).attr('class', ctrwdfcss);
+                        }
+                    }
+
+                    var ctrwdcss2 = "";
+                    var ctrwdcss = obj.parent().attr("class");
+                    if (ctrwdcss.indexOf(" on") > 0) ctrwdcss2 = ctrwdcss.replace(" on", "");
+                    else ctrwdcss2 = ctrwdcss + " on";
+                    obj.parent().attr('class', ctrwdcss2);
+                }
+                else {
+                    if (obj.attr('href2') != undefined) { window.location.href = obj.attr('href2') };
+                }
+            }
+            var ctsub = "";
+            var ctsub2 = "";
+            if (ctmid == "") { ctsub = " nosub"; if (ctwebsub == "y") { ctsub2 = "_ctwebsub" } else { ctsub2 = "_noctwebsub" } }
+            var cont = '<nav id="main_nav2" class="newmenu stack page' + ctsub + ctsub2 + '">';
+
+            document.write(cont);
+</script>
+
+<div id="rwdmenuicon" class="rwdmenuicon" onclick="javascript:rwdmenu();"><i class="fa fa-bars fa-2x"></i></div>
+<div class="rwdsearchicon" onclick="javascript:rwdsearch();"><i class="fa fa-search fa-2x"></i></div>
+<div id="menulist" class="menulist clear-fix">
+    <ul>
+
+        <li id="menu_focus" class="menu focus sub clear-fix">
+            <a class="icon" href="http://www.chinatimes.com/focus/260501" title="速覽">速覽</a>
+            <div class="submenu focus_submenu">
+                <ul class="clear-fix">
+                    <li><a href="/focus/260501">頭條</a></li>
+                    <li><a href="/comment/260502">觀點</a></li>
+                    <li><a href="/politic/260509">政治</a></li>
+                    <li><a href="/life/260508">生活</a></li>
+                    <li><a href="/society/260503">社會</a></li>
+                    <li><a href="/showbiz/260507">娛樂</a></li>
+                    <li><a href="/sport/260504">運動</a></li>
+                    <li><a href="/finance/260511">財經</a></li>
+                    <li><a href="/international/260510">國際</a></li>
+                    <li><a href="/mainland/260514">兩岸</a></li>
+                    <li><a href="/technology/260505">科技</a></li>
+                    <li><a href="/military/260518">軍事</a></li>
+                </ul>
+            </div>
+        </li>
+        <li id="menu_realtimenews" class="menu realtimenews sub clear-fix">
+            <a class="icon" href="http://www.chinatimes.com/realtimenews/" title="即時">即時</a>
+            <div class="submenu realtimenews_submenu">
+                <ul class="clear-fix">
+                    <li><a href="/realtimenews/">即時首頁</a></li>
+                    <li><a href="/realtimenews/260401">焦點</a></li>
+                    <li><a href="/realtimenews/260407">政治</a></li>
+                    <li><a href="/realtimenews/260405">生活</a></li>
+                    <li><a href="/realtimenews/260402">社會</a></li>
+                    <li><a href="/realtimenews/260404">娛樂</a></li>
+                    <li><a href="/realtimenews/260403">運動</a></li>
+                    <li><a href="/realtimenews/260410">財經</a></li>
+                    <li><a href="/realtimenews/260408">國際</a></li>
+                    <li><a href="/realtimenews/260409">兩岸</a></li>
+                    <li><a href="/realtimenews/260412">科技</a></li>
+                    <li><a href="/realtimenews/260417">軍事</a></li>
+                    <li><a href="/hotnews/click">熱門</a></li>
+                </ul>
+            </div>
+        </li>
+        <li id="menu_newspapers" class="menu newspapers sub clear-fix">
+            <a class="icon" href="http://www.chinatimes.com/newspapers/" title="日報">日報</a>
+            <div class="submenu newspapers_submenu">
+                <ul class="clear-fix">
+                    <li><a href="/newspapers/">日報精選</a></li>
+                    <li><a href="/newspapers/2601">中國時報</a></li>
+                    <li><a href="/newspapers/2602">工商時報</a></li>
+                    <li><a href="/newspapers/2603">旺報</a></li>
+                    <li><a href="/newspapers/ctw">時周精選</a></li>
+                    <li><a href="/newspapers/wantweekly">周刊王精選</a></li>
+                </ul>
+            </div>
+        </li>
+
+
+        <li id="menu_money" class="menu money sub clear-fix">
+            <a class="icon" href="/money/" title="財經">財經</a>
+            <div class="submenu money_submenu">
+                <ul class="clear-fix">
+                    <li><a href="/money/">財經首頁</a></li>
+                    <li><a href="/money/realtimenews">即時</a></li>
+                    <li><a href="/money/focus">要聞</a></li>
+                    <li><a href="/money/securities">證券</a></li>
+                    <li><a href="/money/comment">觀點</a></li>
+                    <li><a href="/money/international">全球</a></li>
+                    <li><a href="/money/banking">金融</a></li>
+                    <li><a href="/money/technology">科技</a></li>
+                    <li><a href="/money/industry">產業</a></li>
+                    <li><a href="/money/special">特刊</a></li>
+                    <li><a href="/money/stock">解盤</a></li>
+                    <li><a href="/money/investment">理財</a></li>
+                    <li><a href="/money/hotnews">熱門</a></li>
+                </ul>
+            </div>
+        </li>
+
+
+        <li id="menu_world" class="menu world sub clear-fix">
+            <a class="icon" href="http://www.chinatimes.com/world/" title="全球">全球</a>
+            <div class="submenu world_submenu">
+                <ul class="clear-fix">
+                    <li><a href="/world/">全球首頁</a></li>
+                    <li><a href="/world/report/">時事</a></li>
+                    <li><a href="/world/trend/">趨勢</a></li>
+                    <li><a href="/world/tech/">科技</a></li>
+                    <li><a href="/world/knowledge/">新知</a></li>
+                    <li><a href="/world/health/">健康</a></li>
+                    <li><a href="/world/celeb/">名流</a></li>
+                    <li><a href="/world/odds/">奇聞</a></li>
+                    <li><a href="/world/hotnews/">熱門</a></li>
+                </ul>
+            </div>
+        </li>
+        <li id="menu_chinese" class="menu chinese sub clear-fix">
+            <a class="icon" href="http://www.chinatimes.com/chinese/" title="華人">華人</a>
+            <div class="submenu chinese_submenu">
+                <ul class="clear-fix">
+                    <li><a href="/chinese/">華人首頁</a></li>
+                    <li><a href="/chinese/tidings/">時政</a></li>
+                    <li><a href="/chinese/xstrait/">兩岸</a></li>
+                    <li><a href="/chinese/business/">錢潮</a></li>
+                    <li><a href="/chinese/ecology/">環保</a></li>
+                    <li><a href="/chinese/topic/">話題</a></li>
+                    <li><a href="/chinese/insider/">深度</a></li>
+                    <li><a href="/chinese/people/">名人</a></li>
+                    <li><a href="/chinese/hotnews/">熱門</a></li>
+
+                </ul>
+            </div>
+        </li>
+        <li id="menu_armament" class="menu armament sub clear-fix">
+            <a class="icon" href="http://www.chinatimes.com/armament/" title="軍事">軍事</a>
+            <div class="submenu armament_submenu">
+                <ul class="clear-fix">
+                    <li><a href="/armament/">軍事首頁</a></li>
+                    <li><a href="/armament/airforce/">空軍</a></li>
+                    <li><a href="/armament/navy/">海軍</a></li>
+                    <li><a href="/armament/army/">陸軍</a></li>
+                    <li><a href="/armament/space/">太空</a></li>
+                    <li><a href="/armament/internet/">網路</a></li>
+                    <li><a href="/armament/history/">戰史</a></li>
+                    <li><a href="/armament/strategy/">戰略</a></li>
+                    <li><a href="/armament/hotnews/">熱門</a></li>
+
+
+                </ul>
+            </div>
+        </li>
+
+
+        <li id="menu_star" class="menu star sub clear-fix">
+            <a class="icon" href="/star/" title="娛樂">娛樂</a>
+            <div class="submenu star_submenu">
+                <ul class="clear-fix">
+                    <li><a href="/star/">娛樂首頁</a></li>
+                    <li><a href="/star/news/">新聞</a></li>
+                    <li><a href="/star/gallery/">美圖</a></li>
+                    <li><a href="/star/theme/">專題</a></li>
+                    <li><a href="/star/fashion/">時尚</a></li>
+                    <li><a href="/broadcast/">廣播</a></li>
+                    <li><a href="/star/hotnews/">熱門</a></li>
+                </ul>
+            </div>
+        </li>
+        <li id="menu_sports" class="menu sports sub clear-fix">
+            <a class="icon" href="/sports/" title="運動">運動</a>
+            <div class="submenu sports_submenu">
+                <ul class="clear-fix">
+                    <li><a href="/sports/">運動首頁</a></li>
+                    <li><a href="/sports/news/">新聞</a></li>
+                    <li><a href="/sports/gallery/">圖片</a></li>
+                    <li><a href="/sports/theme/">專題</a></li>
+                    <li><a href="/sports/hotnews/">熱門</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <li id="menu_tv" class="menu tv sub clear-fix">
+            <a class="icon" href="http://tube.chinatimes.com/" title="視頻">視頻</a>
+            <div class="submenu tv_submenu">
+                <ul class="clear-fix">
+                    <li><a href="http://tube.chinatimes.com/">視頻首頁</a></li>
+                    <li><a href="http://tube.chinatimes.com/total">總覽</a></li>
+                    <li><a href="http://tube.chinatimes.com/live">直播</a></li>
+                    <li><a href="http://tube.chinatimes.com/ctitv">中天</a></li>
+                    <li><a href="http://tube.chinatimes.com/ctv">中視</a></li>
+                    <li><a href="http://tube.chinatimes.com/entertainment">綜藝</a></li>
+                    <li><a href="http://tube.chinatimes.com/drama">戲劇</a></li>
+                    <li><a href="http://tube.chinatimes.com/music">音樂</a></li>
+                    <li><a href="http://tube.chinatimes.com/tube-star">明星</a></li>
+                    <li><a href="http://tube.chinatimes.com/tube-life">生活</a></li>
+                    <li><a href="http://tube.chinatimes.com/tube-fun">趣味</a></li>
+                    <li><a href="http://tube.chinatimes.com/fun">搜奇</a></li>
+                    <li><a href="http://tube.chinatimes.com/special">特輯</a></li>
+                    <li><a href="http://tube.chinatimes.com/tube-hot">綜合</a></li>
+                    <li><a href="http://tube.chinatimes.com/click">熱門</a></li>
+                </ul>
+            </div>
+
+        </li>
+        <li id="menu_photo-app" class="menu photo-app sub clear-fix">
+            <a class="icon" href="http://photo.chinatimes.com/" title="圖輯">圖輯</a>
+            <div class="submenu photoapp_submenu">
+                <ul class="clear-fix">
+
+                    <li><a href="http://photo.chinatimes.com/">圖輯首頁</a></li>
+                    <li><a href="http://photo.chinatimes.com/total/">總覽</a></li>
+                    <li><a href="http://photo.chinatimes.com/topic-photo/">時事</a></li>
+                    <li><a href="http://photo.chinatimes.com/life-photo/">生活</a></li>
+                    <li><a href="http://photo.chinatimes.com/ent-photo/">娛樂</a></li>
+                    <li><a href="http://photo.chinatimes.com/sport-photo/">體育</a></li>
+                    <li><a href="http://photo.chinatimes.com/beauty-photo/">正妹</a></li>
+                    <li><a href="http://photo.chinatimes.com/funny-photo/">搜奇</a></li>
+                    <li><a href="http://photo.chinatimes.com/creative-photo/">創作</a></li>
+                    <li><a href="http://photo.chinatimes.com/technology-photo/">科技</a></li>
+                    <li><a href="http://photo.chinatimes.com/history-photo/">歷史</a></li>
+                    <li><a href="http://photo.chinatimes.com/military-photo/">軍事</a></li>
+                    <li><a href="http://photo.chinatimes.com/goodnews-photo/">溫馨</a></li>
+                    <li><a href="http://photo.chinatimes.com/hot-photo/">綜合</a></li>
+                    <li><a href="http://photo.chinatimes.com/click/">熱門</a></li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li class="menu more nosub clear-fix"><a class="icon" href="http://www.chinatimes.com/syndication/robots" title="精選">精選</a></li>
+    </ul>
+</div>
+
+
+
+
+<div class="search clear-fix">
+    <a href="javascript:;" title="搜尋"><span>搜尋</span></a>
+    <div class="search_view">
+        <div class="search_pos clear-fix">
+            <div class="input-container">
+                <input type="text" onkeypress="return clickButton(event,'btnsearch')" size="100" class="text-input" id="txtsearch" name="txtsearch">
+                <div class="input-clear"> </div>
+            </div>
+            <input type="button" onclick="javascript:redirsearch();" class="submit" value="搜尋" id="btnsearch">
+            <span class="cancel">X</span>
+        </div>
+    </div>
+</div>
+        </nav>

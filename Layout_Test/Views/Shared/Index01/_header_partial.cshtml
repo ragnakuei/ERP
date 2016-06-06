@@ -1,0 +1,42 @@
+﻿<header class="globehead stack">
+    <hgroup>
+        <h1 title="@ViewData["site_name"]"> <a href="@ViewData["main_url"]">@ViewData["site_name"]</a></h1>
+        <h2> 優質豐富的新聞媒體</h2>
+    </hgroup>
+    <!--topmenu-->
+    <div class="top_menu">
+        <ul class="clear-fix">
+
+            <li><a onclick="window.open('http://i-reporter.chinatimes.com/Complain.aspx','tellme','toolbar=no,width=470,height=320,directories=no,status=no,scrollbars=yes,resize=yes,menubar=no')" class="tellme" title="爆料" href="javascript:void(0)">爆料</a></li>
+            <li><a target="_blank" rel="nofollow" href="http://weibo.chinatimes.com/">微博</a></li>
+            <li><a target="_blank" rel="nofollow" href="http://astro.chinatimes.com/">開運</a></li>
+            <li><a href="http://mamibaby.chinatimes.com/" rel="nofollow" target="_blank">媽媽寶貝</a></li>
+            <li><a href="http://s365.chinatimes.com" rel="nofollow" target="_blank">團購好物</a></li>
+            <li><a href="http://health.chinatimes.com" rel="nofollow" target="_blank">健康+</a></li>
+            <li><a target="_blank" rel="nofollow" href="http://want-car.chinatimes.com/">旺車</a></li>
+            <li><a href="@ViewData["main_url"]broadcast/" rel="nofollow" target="_blank">廣播</a></li>
+            <li><a href="https://lecoin.chinatimes.com/" rel="nofollow" target="_blank">樂公益</a></li>
+
+            <li class="sethomepage">
+                <a onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('@ViewData["main_url"]');"
+                   href="javascript:;" title="設為首頁">設為首頁</a>
+            </li>
+        </ul>
+    </div>
+    <div class="today_date">
+        <div class="date">
+            <p id="today_box">  <span class="month" id="navm"></span><span class="day" id="navd"></span> </p>
+            <div class="sbox"> <span class="icon"></span> </div>
+            <div class="calendar">
+                <input type="text" id="datepicker">
+                <img class="ui-datepicker-trigger h" src="@ViewData["main_url"]images/space.png" alt="歷史新聞" title="歷史新聞" data-width="2" data-height="2" data-aspect-ratio="1">
+            </div>
+        </div>
+    </div>
+    <script>
+                var dtNow = new Date();
+                var chm = new Array("一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二");
+                $('#navm').text(chm[dtNow.getMonth()] + "月");
+                $('#navd').text(dtNow.getDate());
+    </script>
+</header>
