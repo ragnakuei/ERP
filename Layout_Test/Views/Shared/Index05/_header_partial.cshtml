@@ -1,4 +1,4 @@
-﻿<header class="globehead stack new">
+﻿<header class="globehead stack">
     <hgroup>
         <h1 title="中時電子報"> <a href="http://www.chinatimes.com/">中時電子報</a></h1>
         <h2> 優質豐富的新聞媒體</h2>
@@ -6,24 +6,15 @@
     <!--topmenu-->
     <div class="top_menu">
         <ul class="clear-fix">
-            <li><a href="javascript:void(0)" title="爆料" class="tellme" onclick="window.open('http://i-reporter.chinatimes.com/Complain.aspx','tellme','toolbar=no,width=470,height=320,directories=no,status=no,scrollbars=yes,resize=yes,menubar=no')"> 爆料</a> </li>
-            <li>
-                <span id="idxlang">
-                    <a href="//www.chinatimes.com/" lang="zh" hreflang="zh-tw"
-                       onclick="javascript:TS_Switch_T();">繁</a>
-                </span>
-            </li>
-            <li class="lang clear-fix">
-                <a href="//www.chinatimes.com/cn/" lang="zh" hreflang="zh-cn"
-                   onclick="javascript:TS_Switch_S();">簡</a>
-            </li>
-            <li><a href="http://weibo.chinatimes.com/" rel="nofollow" target="_blank">微博</a></li>
+
+            <li><a onclick="window.open('http://i-reporter.chinatimes.com/Complain.aspx','tellme','toolbar=no,width=470,height=320,directories=no,status=no,scrollbars=yes,resize=yes,menubar=no')" class="tellme" title="爆料" href="javascript:void(0)">爆料</a></li>
+            <li><a target="_blank" rel="nofollow" href="http://weibo.chinatimes.com/">微博</a></li>
+            <li><a target="_blank" rel="nofollow" href="http://astro.chinatimes.com/">開運</a></li>
             <li><a href="http://mamibaby.chinatimes.com/" rel="nofollow" target="_blank">媽媽寶貝</a></li>
-            <li onclick="$('#idx_tab3_2').click();"><a href="http://s365.chinatimes.com/" rel="nofollow" target="_blank">團購好物</a></li>
+            <li><a href="http://s365.chinatimes.com" rel="nofollow" target="_blank">團購好物</a></li>
             <li><a href="http://health.chinatimes.com" rel="nofollow" target="_blank">健康+</a></li>
-            <li><a target="_blank" rel="nofollow" href="http://want-car.chinatimes.com/">旺車網</a></li>
-            <li><a target="_blank" rel="nofollow" href="http://24h.pchome.com.tw/region/DECG">拾藝術</a></li>
-            <li><a href="/broadcast/">廣播</a></li>
+            <li><a target="_blank" rel="nofollow" href="http://want-car.chinatimes.com/">旺車</a></li>
+            <li><a href="http://www.chinatimes.com/broadcast/" rel="nofollow" target="_blank">廣播</a></li>
             <li><a href="https://lecoin.chinatimes.com/" rel="nofollow" target="_blank">樂公益</a></li>
 
             <li class="sethomepage">
@@ -31,10 +22,6 @@
                    href="javascript:;" title="設為首頁">設為首頁</a>
             </li>
         </ul>
-
-
-
-
     </div>
     <div class="today_date">
         <div class="date">
@@ -48,86 +35,12 @@
     </div>
 
     <script>
-                var dtNow = new Date();
-                var chm = new Array("一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二");
-                $('#navm').text(chm[dtNow.getMonth()] + "月");
-                $('#navd').text(dtNow.getDate());
+         var dtNow = new Date();
+         var chm = new Array("一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二");
+         $('#navm').text(chm[dtNow.getMonth()] + "月");
+         $('#navd').text(dtNow.getDate());
     </script>
 
 
-    <section id="sect_idx_realtime" class="idx_realtime">
-        <div class="breakingnewsbox clear-fix">
-            <header>
-                <h4 class="titlename">
-                    焦點速報
-                </h4>
-            </header>
-            <span class="arr_l"></span>
-            <article>
-                <div id="abgne_marquee">
-                    <ul id="abgne_marquee_ul"></ul>
-                    <script>
-                                var AryReal = new Array();
-                                function ctreal(cword, ccolor, ctitle, curl) { this.cword = cword; this.ccolor = ccolor; this.ctitle = ctitle; this.curl = curl; }
-                                function addreal(cword, ccolor, ctitle, curl) { AryReal.push(new ctreal(cword, ccolor, ctitle, curl)); }
-
-                                addreal("國際聚焦", "#d79504", "擬開始實驗 芬蘭將推全國基本收入制", "http://photo.chinatimes.com/20160606005284-260803"); addreal("娛樂線上", "#0547eb", "香港小姐選輸李嘉欣 她傳嫁百億闊少", "http://photo.chinatimes.com/20160606005447-260806"); addreal("野史軼聞", "#16a60c", "中國唯一女皇帝 立無字碑原因為何？", "http://photo.chinatimes.com/20160606005387-260812"); addreal("影劇視聽", "#f0001b", "古今對照 揭露那些年復仇者聯盟真貌", "http://photo.chinatimes.com/20160606005675-260806"); addreal("報時國中", "#bb00fa", "哪位名人３日逝世 將舉辦出殯遊行？", "http://quiz.chinatimes.com/20160606003874-320101"); addreal("獎掖優秀學生", "#11d3e4", "時報文化基金會獎學金 即起開放申請", "http://www.chinatimes.com/realtimenews/20160420002860-260401");
-
-                                var R_i, sReal;
-                                sReal = "";
-                                if (idx_RealSet == 1) idx_RealSet = 100;
-
-                                if (idx_RealSet != 100) {
-                                    for (R_i = 0; R_i < AryReal.length; R_i++) {
-                                        ff_RealCont(R_i, sReal);
-                                    }
-
-                                }
-                                function ff_RealCont(i, sContent) {
-                                    sReal = sReal + '<li class="clear-fix"><div class="top"';
-                                    if (AryReal[i].ccolor.length > 0) { sReal = sReal + ' style="background-color: ' + AryReal[i].ccolor + ';"'; }
-                                    sReal = sReal + '>' + AryReal[i].cword + '</div>';
-                                    sReal = sReal + ' <a href="' + GetUrl_Cn(AryReal[i].curl) + '" target="_blank"><h2>' + AryReal[i].ctitle + '</h2></a></li>';
-                                    return sContent
-                                }
-
-                                if (idx_RealSet == 100) $("#sect_idx_realtime").hide();
-                                else $('#abgne_marquee_ul').html(sReal);
-                    </script>
-                    <div class="marquee_btn" id="marquee_next_btn">
-                        <span class="icon_16x16"></span>
-                    </div>
-                    <div class="marquee_btn" id="marquee_prev_btn">
-                        <span class="icon_16x16"></span>
-                    </div>
-                </div>
-            </article>
-            <span class="arr_r"></span>
-        </div>
-    </section>
-
-
-    <div class="google-analytics">
-        <span class="text1">目前</span>
-        <span class="text2">網站上有</span>
-
-        <span class="text3"><a href="/hotnews/click">13838</a></span>
-
-        <span class="text4">位使用者</span><span class="text5">Power By GA</span>
-    </div>
-
-    <div id="newyear2015" class="newyear2015">
-        <div class="newyearbox">
-            <div class="pic00"></div>
-            <div class="pic01"></div>
-            <div class="pic02"></div>
-            <div class="pic03"></div>
-            <div class="pic04"></div>
-            <div class="pic05"></div>
-            <div class="pic06"></div>
-            <div class="pic07"></div>
-            <div class="pic08"></div>
-        </div>
-    </div>
 
 </header>

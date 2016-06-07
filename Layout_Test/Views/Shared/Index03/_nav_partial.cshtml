@@ -1,4 +1,80 @@
-﻿<nav class="newmenu stack idx">
+﻿<script type="text/javascript">
+            var ctmid = "";
+            var ctrwdArr = new Array("focus", "realtimenews", "newspapers", "star", "sports", "photo-app", "ivoting", "newsblog", "mag", "tv", "money", "event", "armament", "chinese", "world");
+            function rwdmenu() {
+                var ctrwdcss2 = "";
+                var ctrwdcss = $('#menulist').attr("class");
+                $(".search_view").hide();
+                if (ctrwdcss.indexOf(" on") > 0) ctrwdcss2 = ctrwdcss.replace(" on", "");
+                else ctrwdcss2 = ctrwdcss + " on";
+                $('#menulist').attr('class', ctrwdcss2);
+            }
+
+            function rwdsearch() {
+                if ($(".search_view").css('display') == "none") { $(".search_view").show(); var ctrwdcss2 = "menulist clear-fix"; $('#menulist').attr('class', ctrwdcss2); }
+                else { $(".search_view").hide(); }
+            }
+            function ctShowMenu() {
+                if (ctmid != "") {
+                    var ctmidok = "#menu_" + ctmid;
+                    var ctmcss = "menu " + ctmid + " sub clear-fix on";
+                    $(ctmidok).attr('class', ctmcss);
+
+                }
+            }
+
+            function tosetrwdmenuclick() {
+
+
+                var ctrwdid = "";
+                var ctrwdfid = "";
+
+                for (var ctrwdi = 0; ctrwdi < ctrwdArr.length; ctrwdi++) {
+                    ctrwdid = ctrwdArr[ctrwdi];
+                    ctrwdfid = "#menu_" + ctrwdid;
+
+
+                    if ($(ctrwdfid).children("a").attr('href2') == undefined) $(ctrwdfid).children("a").attr('href2', $(ctrwdfid).children("a").attr('href'));
+
+                    $(ctrwdfid).children("a").removeAttr('href');
+                    $(ctrwdfid).children("a").click(function () {
+
+
+                        ToChangeRwdMenu($(this));
+                    })
+                }
+
+            }
+
+            function ToChangeRwdMenu(obj) {
+                var isRWD2 = $(window).width() < 768;
+                if (isRWD2) {
+                    var ctrwdid = "";
+                    var ctrwdfid = "";
+                    var ctrwdfcss = "";
+                    var ctrwdfidnow = "#" + obj.parent().attr('id');
+
+                    for (var ctrwdi = 0; ctrwdi < ctrwdArr.length; ctrwdi++) {
+                        ctrwdid = ctrwdArr[ctrwdi];
+                        ctrwdfid = "#menu_" + ctrwdid;
+                        if (ctrwdfid != ctrwdfidnow) {
+                            ctrwdfcss = "menu " + ctrwdid + " sub clear-fix";
+                            $(ctrwdfid).attr('class', ctrwdfcss);
+                        }
+                    }
+                    var ctrwdcss2 = "";
+                    var ctrwdcss = obj.parent().attr("class");
+                    if (ctrwdcss.indexOf(" on") > 0) ctrwdcss2 = ctrwdcss.replace(" on", "");
+                    else ctrwdcss2 = ctrwdcss + " on";
+                    obj.parent().attr('class', ctrwdcss2);
+                }
+                else {
+                    if (obj.attr('href2') != undefined) { window.location.href = obj.attr('href2') };
+                }
+            }
+
+</script>
+<nav class="newmenu stack idx">
     <div id="rwdmenuicon" class="rwdmenuicon" onclick="javascript:rwdmenu();"><i class="fa fa-bars fa-2x"></i></div>
     <div class="rwdsearchicon" onclick="javascript:rwdsearch();"><i class="fa fa-search fa-2x"></i></div>
     <div id="menulist" class="menulist clear-fix">

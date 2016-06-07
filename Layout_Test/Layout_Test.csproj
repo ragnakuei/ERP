@@ -221,6 +221,12 @@
     <Content Include="Views\Shared\Index05\_Layout.cshtml" />
     <Content Include="Views\Shared\Index05\_nav_partial.cshtml" />
     <Content Include="Views\Shared\Index05\_social_idxbox_partial.cshtml" />
+    <Content Include="Views\Home\Index06.cshtml" />
+    <Content Include="Views\Shared\Index06\_footer_partial.cshtml" />
+    <Content Include="Views\Shared\Index06\_header_partial.cshtml" />
+    <Content Include="Views\Shared\Index06\_Layout.cshtml" />
+    <Content Include="Views\Shared\Index06\_nav_partial.cshtml" />
+    <Content Include="Views\Shared\Index06\_social_idxbox_partial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -35,3 +35,23 @@
 @{Html.RenderPartial("/Views/Shared/Index04/social_idxbox_partial.cshtml");}
 @{Html.RenderPartial("/Views/Shared/Index04/footer_partial.cshtml");}
 
+***Index05 6月7日 即時 首頁
+************body內含article(breadcrumb、內容，左邊)、aside(右邊)、左側廣告、右側廣告
+@{Html.RenderPartial("/Views/Shared/Index05/_header_partial.cshtml");}
+@{Html.RenderPartial("/Views/Shared/Index05/_nav_partial.cshtml");}
+@RenderBody()
+@{Html.RenderPartial("/Views/Shared/Index05/_aside_partial.cshtml");}
+@{Html.RenderPartial("/Views/Shared/Index05/_social_idxbox_partial.cshtml");}
+@{Html.RenderPartial("/Views/Shared/Index05/_footer_partial.cshtml");}
+
+
+
+
+
+
+1．電子報首頁跟各頻道首頁的nav是不同的結構
+2．各頻首頁才有breadcrumb
+3．
+
+
+@("@")
