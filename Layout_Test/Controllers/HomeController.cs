@@ -8,6 +8,11 @@ namespace Layout_Test.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         // GET: Home
         public ActionResult Index01()
         {
@@ -44,6 +49,41 @@ namespace Layout_Test.Controllers
             ViewData["fb_url"] = "https://www.facebook.com/CTfans";
             ViewData["meta_image"] = "http://img.chinatimes.com/newsphoto/2015-06-18/Clipping/20150618003774_635702388922454097.jpg";
             ViewData["cache_image_url"] = "http://cache.chinatimes.com/images/";
+            return View();
+        }
+
+        public ActionResult Index03()
+        {
+            return View();
+        }
+
+        public ActionResult Index04()
+        {
+            return View();
+        }
+
+        public ActionResult Index04_header()
+        {
+            return View();
+        }
+
+        public ActionResult Index04_nav()
+        {
+            return View();
+        }
+
+        public ActionResult Index04_social_idxbox()
+        {
+            return View();
+        }
+
+        public ActionResult Index04_footer()
+        {
+            return View();
+        }
+
+        public ActionResult Index05()
+        {
             return View();
         }
     }

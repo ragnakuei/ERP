@@ -198,6 +198,29 @@
     <Content Include="Views\Shared\Index02\_social_idxbox_partial.cshtml" />
     <Content Include="Views\Home\Index02.cshtml" />
     <Content Include="Views\Shared\Index02\_breadcrumb_partial.cshtml" />
+    <Content Include="Views\Shared\Index03\_footer_partial.cshtml" />
+    <Content Include="Views\Shared\Index03\_header_partial.cshtml" />
+    <Content Include="Views\Shared\Index03\_Layout.cshtml" />
+    <Content Include="Views\Shared\Index03\_nav_partial.cshtml" />
+    <Content Include="Views\Shared\Index03\_social_idxbox_partial.cshtml" />
+    <Content Include="Views\Home\Index03.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Index04\footer_partial.cshtml" />
+    <Content Include="Views\Shared\Index04\header_partial.cshtml" />
+    <Content Include="Views\Shared\Index04\_Layout.cshtml" />
+    <Content Include="Views\Shared\Index04\nav_partial.cshtml" />
+    <Content Include="Views\Shared\Index04\social_idxbox_partial.cshtml" />
+    <Content Include="Views\Home\Index04.cshtml" />
+    <Content Include="Views\Home\Index04_header.cshtml" />
+    <Content Include="Views\Home\Index04_nav.cshtml" />
+    <Content Include="Views\Home\Index04_social_idxbox.cshtml" />
+    <Content Include="Views\Home\Index04_footer.cshtml" />
+    <Content Include="Views\Home\Index05.cshtml" />
+    <Content Include="Views\Shared\Index05\_footer_partial.cshtml" />
+    <Content Include="Views\Shared\Index05\_header_partial.cshtml" />
+    <Content Include="Views\Shared\Index05\_Layout.cshtml" />
+    <Content Include="Views\Shared\Index05\_nav_partial.cshtml" />
+    <Content Include="Views\Shared\Index05\_social_idxbox_partial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
