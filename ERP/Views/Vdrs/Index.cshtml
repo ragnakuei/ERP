@@ -1,0 +1,111 @@
+﻿@model IEnumerable<ERP.Models.Vdr>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.rowid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrNa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrRmaTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrSalNa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrSalTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrAdr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrDtPay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrDtC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrDtM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrRk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrEn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.rowid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrNa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrRmaTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrSalNa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrSalTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrAdr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrDtPay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrDtC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrDtM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrRk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VdrEn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VdrNo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VdrNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VdrNo })
+        </td>
+    </tr>
+}
+
+</table>
