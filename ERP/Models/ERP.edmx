@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ERPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Vdr">
+          <Key>
+            <PropertyRef Name="VdrNo" />
+          </Key>
+          <Property Name="rowid" Type="char" MaxLength="36" />
+          <Property Name="VdrNo" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="VdrNa" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="VdrId" Type="char" MaxLength="8" />
+          <Property Name="VdrTel" Type="varchar" MaxLength="20" />
+          <Property Name="VdrRmaTel" Type="varchar" MaxLength="20" />
+          <Property Name="VdrSalNa" Type="nvarchar" MaxLength="20" />
+          <Property Name="VdrSalTel" Type="varchar" MaxLength="20" />
+          <Property Name="VdrUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="VdrAdr" Type="nvarchar" MaxLength="100" />
+          <Property Name="VdrDtPay" Type="varchar" MaxLength="2" />
+          <Property Name="VdrDtC" Type="datetime" Nullable="false" />
+          <Property Name="VdrDtM" Type="datetime" Nullable="false" />
+          <Property Name="VdrRk" Type="nvarchar" MaxLength="500" />
+          <Property Name="VdrEn" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ERPModelStoreContainer">
+          <EntitySet Name="Vdr" EntityType="Self.Vdr" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ERPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Vdr">
+          <Key>
+            <PropertyRef Name="VdrNo" />
+          </Key>
+          <Property Name="rowid" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+          <Property Name="VdrNo" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="VdrNa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VdrId" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="VdrTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VdrRmaTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VdrSalNa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VdrSalTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VdrUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VdrAdr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VdrDtPay" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="VdrDtC" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VdrDtM" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VdrRk" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="VdrEn" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Vdrs" EntityType="Self.Vdr" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ERPModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Vdrs">
+            <EntityTypeMapping TypeName="ERPModel.Vdr">
+              <MappingFragment StoreEntitySet="Vdr">
+                <ScalarProperty Name="rowid" ColumnName="rowid" />
+                <ScalarProperty Name="VdrNo" ColumnName="VdrNo" />
+                <ScalarProperty Name="VdrNa" ColumnName="VdrNa" />
+                <ScalarProperty Name="VdrId" ColumnName="VdrId" />
+                <ScalarProperty Name="VdrTel" ColumnName="VdrTel" />
+                <ScalarProperty Name="VdrRmaTel" ColumnName="VdrRmaTel" />
+                <ScalarProperty Name="VdrSalNa" ColumnName="VdrSalNa" />
+                <ScalarProperty Name="VdrSalTel" ColumnName="VdrSalTel" />
+                <ScalarProperty Name="VdrUrl" ColumnName="VdrUrl" />
+                <ScalarProperty Name="VdrAdr" ColumnName="VdrAdr" />
+                <ScalarProperty Name="VdrDtPay" ColumnName="VdrDtPay" />
+                <ScalarProperty Name="VdrDtC" ColumnName="VdrDtC" />
+                <ScalarProperty Name="VdrDtM" ColumnName="VdrDtM" />
+                <ScalarProperty Name="VdrRk" ColumnName="VdrRk" />
+                <ScalarProperty Name="VdrEn" ColumnName="VdrEn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
