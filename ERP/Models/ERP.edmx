@@ -20,10 +20,10 @@
           <Property Name="VdrUrl" Type="nvarchar" MaxLength="100" />
           <Property Name="VdrAdr" Type="nvarchar" MaxLength="100" />
           <Property Name="VdrDtPay" Type="varchar" MaxLength="2" />
-          <Property Name="VdrDtC" Type="datetime" Nullable="false" />
-          <Property Name="VdrDtM" Type="datetime" Nullable="false" />
+          <Property Name="VdrDtC" Type="datetime" />
+          <Property Name="VdrDtM" Type="datetime" />
           <Property Name="VdrRk" Type="nvarchar" MaxLength="500" />
-          <Property Name="VdrEn" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="VdrEn" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ERPModelStoreContainer">
           <EntitySet Name="Vdr" EntityType="Self.Vdr" Schema="dbo" store:Type="Tables" />
@@ -47,10 +47,10 @@
           <Property Name="VdrUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="VdrAdr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="VdrDtPay" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="VdrDtC" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="VdrDtM" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VdrDtC" Type="DateTime" Precision="3" />
+          <Property Name="VdrDtM" Type="DateTime" Precision="3" />
           <Property Name="VdrRk" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="VdrEn" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="VdrEn" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Vdrs" EntityType="Self.Vdr" />

@@ -25,9 +25,9 @@ namespace ERP.Models
         public string VdrUrl { get; set; }
         public string VdrAdr { get; set; }
         public string VdrDtPay { get; set; }
-        public System.DateTime VdrDtC { get; set; }
-        public System.DateTime VdrDtM { get; set; }
+        public Nullable<System.DateTime> VdrDtC { get; set; }
+        public Nullable<System.DateTime> VdrDtM { get; set; }
         public string VdrRk { get; set; }
-        public string VdrEn { get; set; }
+        public bool VdrEn { get; set; }
     }
 }

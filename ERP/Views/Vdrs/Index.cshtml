@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.rowid)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.VdrNa)
         </th>
         <th>
@@ -41,26 +38,11 @@
         <th>
             @Html.DisplayNameFor(model => model.VdrDtPay)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VdrDtC)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VdrDtM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VdrRk)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VdrEn)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.rowid)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.VdrNa)
         </td>
@@ -87,18 +69,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.VdrDtPay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VdrDtC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VdrDtM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VdrRk)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VdrEn)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.VdrNo }) |

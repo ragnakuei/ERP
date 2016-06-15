@@ -10,13 +10,14 @@ namespace ERP.Models
     {
         public Vdr()
         {
-            VdrNo="0";
+            VdrNo = "0";
+            VdrEn = true;
         }
     }
 
     public class VdrAttr
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string rowid { get; set; }
 
         [Key]
@@ -28,25 +29,33 @@ namespace ERP.Models
         [DisplayName("廠商名稱")]
         public string VdrNa { get; set; }
 
-        [DisplayName("統一編號")]
+        [DisplayName("廠商統編")]
+        [MaxLength(8, ErrorMessage = "統編長度太長")]
+        [MinLength(1, ErrorMessage = "統編長度太短")]
         public string VdrId { get; set; }
 
         [DisplayName("廠商電話")]
+        [RegularExpression(@"^(\d{0,4}-)?\d{6,10}$", ErrorMessage = "不符合電話格式")]
         public string VdrTel { get; set; }
 
         [DisplayName("廠商報修電話")]
+        [RegularExpression(@"^(\d{0,4}-)?\d{6,10}$", ErrorMessage = "不符合電話格式")]
         public string VdrRmaTel { get; set; }
 
         [DisplayName("廠商業務")]
+        [MaxLength(20, ErrorMessage = "內容過長")]
         public string VdrSalNa { get; set; }
 
         [DisplayName("廠商業務電話")]
+        [RegularExpression(@"^(\d{0,4}-)?\d{6,10}$", ErrorMessage = "不符合電話格式")]
         public string VdrSalTel { get; set; }
 
         [DisplayName("廠商報修網址")]
+        [MaxLength(100, ErrorMessage = "內容過長")]
         public string VdrUrl { get; set; }
 
         [DisplayName("廠商地址")]
+        [MaxLength(100, ErrorMessage = "內容過長")]
         public string VdrAdr { get; set; }
 
         [DisplayName("廠商付款日")]
@@ -55,13 +64,14 @@ namespace ERP.Models
         [DisplayName("建立日期")]
         public DateTime VdrDtC { get; set; }
 
-        [DisplayName("最後修改日期")]
+        [DisplayName("修改日期")]
         public DateTime VdrDtM { get; set; }
 
         [DisplayName("備註")]
+        [MaxLength(500, ErrorMessage = "內容過長")]
         public string VdrRk { get; set; }
 
-        [DisplayName("是否啟用")]
-        public string VdrEn { get; set; }
+        [DisplayName("啟用")]
+        public bool VdrEn { get; set; }
     }
 }

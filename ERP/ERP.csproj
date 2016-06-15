@@ -134,6 +134,15 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="CustomJsCss\ToggleCheckBox\css\bootstrap-toggle.css" />
+    <Content Include="CustomJsCss\ToggleCheckBox\css\bootstrap-toggle.min.css" />
+    <Content Include="CustomJsCss\ToggleCheckBox\css\bootstrap2-toggle.css" />
+    <Content Include="CustomJsCss\ToggleCheckBox\css\bootstrap2-toggle.min.css" />
+    <Content Include="CustomJsCss\ToggleCheckBox\doc\script.js" />
+    <Content Include="CustomJsCss\ToggleCheckBox\js\bootstrap-toggle.js" />
+    <Content Include="CustomJsCss\ToggleCheckBox\js\bootstrap-toggle.min.js" />
+    <Content Include="CustomJsCss\ToggleCheckBox\js\bootstrap2-toggle.js" />
+    <Content Include="CustomJsCss\ToggleCheckBox\js\bootstrap2-toggle.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Models\ERP.Context.tt">
@@ -158,6 +167,8 @@
     <Content Include="Models\ERP.edmx.diagram">
       <DependentUpon>ERP.edmx</DependentUpon>
     </Content>
+    <Content Include="CustomJsCss\ToggleCheckBox\js\bootstrap-toggle.min.js.map" />
+    <Content Include="CustomJsCss\ToggleCheckBox\js\bootstrap2-toggle.min.js.map" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />

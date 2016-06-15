@@ -38,8 +38,8 @@ namespace ERP.Controllers
         // GET: Vdrs/Create
         public ActionResult Create()
         {
-            var model = new Vdr();
-            return View(model);
+            Vdr vdr = new Vdr();
+            return View(vdr);
         }
 
         // POST: Vdrs/Create
@@ -47,7 +47,8 @@ namespace ERP.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "rowid,VdrNo,VdrNa,VdrId,VdrTel,VdrRmaTel,VdrSalNa,VdrSalTel,VdrUrl,VdrAdr,VdrDtPay,VdrDtC,VdrDtM,VdrRk,VdrEn")] Vdr vdr)
+        //        public ActionResult Create([Bind(Include = "VdrNo,VdrNa,VdrId,VdrTel,VdrRmaTel,VdrSalNa,VdrSalTel,VdrUrl,VdrAdr,VdrDtPay,VdrDtC,VdrDtM,VdrRk,VdrEn",Exclude ="rowid")] Vdr vdr)
+        public ActionResult Create([Bind(Exclude = "rowid")] Vdr vdr)
         {
             if (ModelState.IsValid)
             {
@@ -60,13 +61,13 @@ namespace ERP.Controllers
         }
 
         // GET: Vdrs/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vdr vdr = db.Vdrs.Find(id);
+            Vdr vdr = db.Vdrs.Find(Id);
             if (vdr == null)
             {
                 return HttpNotFound();
@@ -79,11 +80,14 @@ namespace ERP.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "rowid,VdrNo,VdrNa,VdrId,VdrTel,VdrRmaTel,VdrSalNa,VdrSalTel,VdrUrl,VdrAdr,VdrDtPay,VdrDtC,VdrDtM,VdrRk,VdrEn")] Vdr vdr)
+        public ActionResult Edit([Bind(Include = "VdrNo,VdrNa,VdrId,VdrTel,VdrRmaTel,VdrSalNa,VdrSalTel,VdrUrl,VdrAdr,VdrDtPay,VdrRk,VdrEn",Exclude ="rowid,VdrDtC,VdrDtM")] Vdr vdr)
         {
             if (ModelState.IsValid)
-            {
+            {                
                 db.Entry(vdr).State = EntityState.Modified;
+                db.Entry(vdr).Property(x => x.rowid).IsModified = false;
+                db.Entry(vdr).Property(x => x.VdrDtC).IsModified = false;
+                db.Entry(vdr).Property(x => x.VdrDtM).IsModified = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
