@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ERP.Models.Vdr>
+
+@{
+    ViewBag.Title = "廠商列表";
+}
+
+<h2>廠商列表</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @if (Request.QueryString["SortOrder"] == "VdrNa" || String.IsNullOrEmpty(Request.QueryString["SortOrder"]))
+            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrNa).ToString(), "List", new { SortOrder = "VdrNa_desc" }) }
+            else
+            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrNa).ToString(), "List") }
+        </th>
+        <th>
+            @if (Request.QueryString["SortOrder"] == "VdrId")
+            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrId).ToString(), "List", new { SortOrder = "VdrId_desc" }) }
+            else
+            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrId).ToString(), "List", new { SortOrder = "VdrId" }) }
+        </th>
+        <th>
+            @if (Request.QueryString["SortOrder"] == "VdrTel")
+            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrTel).ToString(), "List", new { SortOrder = "VdrTel_desc" }) }
+            else
+            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrTel).ToString(), "List", new { SortOrder = "VdrTel" }) }
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrRmaTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrSalNa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrSalTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrAdr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VdrDtPay)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VdrNa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VdrId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VdrTel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VdrRmaTel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VdrSalNa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VdrSalTel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VdrUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VdrAdr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VdrDtPay)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VdrNo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.VdrNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.VdrNo })
+            </td>
+        </tr>
+    }
+
+</table>

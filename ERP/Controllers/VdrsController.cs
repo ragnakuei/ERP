@@ -15,9 +15,68 @@ namespace ERP.Controllers
         private Entities db = new Entities();
 
         // GET: Vdrs
-        public ActionResult Index()
+        public ActionResult List(string SortOrder)
         {
-            return View(db.Vdrs.ToList());
+            var vdrs = from s in db.Vdrs select s;
+            switch (SortOrder)
+            {
+                case "VdrNa_desc":
+                    vdrs = vdrs.OrderByDescending(s => s.VdrNa);
+                    break;
+                case "VdrId ":
+                    vdrs = vdrs.OrderBy(s => s.VdrId);                    
+                    break;
+                case "VdrId_desc":
+                    vdrs = vdrs.OrderByDescending(s => s.VdrId);
+                    break;
+                case "VdrTel":
+                    vdrs = vdrs.OrderBy(s => s.VdrTel);
+                    break;
+                case "VdrTel_desc ":
+                    vdrs = vdrs.OrderByDescending(s => s.VdrTel);
+                    break;
+                case "VdrRmaTel ":
+                    vdrs = vdrs.OrderBy(s => s.VdrRmaTel);
+                    break;
+                case "VdrRmaTel_desc":
+                    vdrs = vdrs.OrderByDescending(s => s.VdrRmaTel);
+                    break;
+                case "VdrSalNa":
+                    vdrs = vdrs.OrderBy(s => s.VdrSalNa);
+                    break;
+                case "VdrSalNa_desc ":
+                    vdrs = vdrs.OrderByDescending(s => s.VdrSalNa);
+                    break;
+                case "VdrSalTel ":
+                    vdrs = vdrs.OrderBy(s => s.VdrSalTel);
+                    break;
+                case "VdrSalTel_desc":
+                    vdrs = vdrs.OrderByDescending(s => s.VdrSalTel);
+                    break;
+                case "VdrUrl":
+                    vdrs = vdrs.OrderBy(s => s.VdrUrl);
+                    break;
+                case "VdrUrl_desc ":
+                    vdrs = vdrs.OrderByDescending(s => s.VdrUrl);
+                    break;
+                case "VdrAdr":
+                    vdrs = vdrs.OrderBy(s => s.VdrAdr);
+                    break;
+                case "VdrAdr_desc ":
+                    vdrs = vdrs.OrderByDescending(s => s.VdrAdr);
+                    break;
+                case "VdrDtPay":
+                    vdrs = vdrs.OrderBy(s => s.VdrDtPay);
+                    break;
+                case "VdrDtPay_desc ":
+                    vdrs = vdrs.OrderByDescending(s => s.VdrDtPay);
+                    break;
+                default:  //預設就是VdrNa排序
+                    vdrs = vdrs.OrderBy(s=>s.VdrNa);
+                    break;
+            }
+
+            return View(vdrs);
         }
 
         // GET: Vdrs/Details/5
@@ -54,7 +113,7 @@ namespace ERP.Controllers
             {
                 db.Vdrs.Add(vdr);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
 
             return View(vdr);
@@ -80,16 +139,16 @@ namespace ERP.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VdrNo,VdrNa,VdrId,VdrTel,VdrRmaTel,VdrSalNa,VdrSalTel,VdrUrl,VdrAdr,VdrDtPay,VdrRk,VdrEn",Exclude ="rowid,VdrDtC,VdrDtM")] Vdr vdr)
+        public ActionResult Edit([Bind(Include = "VdrNo,VdrNa,VdrId,VdrTel,VdrRmaTel,VdrSalNa,VdrSalTel,VdrUrl,VdrAdr,VdrDtPay,VdrRk,VdrEn", Exclude = "rowid,VdrDtC,VdrDtM")] Vdr vdr)
         {
             if (ModelState.IsValid)
-            {                
+            {
                 db.Entry(vdr).State = EntityState.Modified;
                 db.Entry(vdr).Property(x => x.rowid).IsModified = false;
                 db.Entry(vdr).Property(x => x.VdrDtC).IsModified = false;
                 db.Entry(vdr).Property(x => x.VdrDtM).IsModified = false;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             return View(vdr);
         }
@@ -117,7 +176,7 @@ namespace ERP.Controllers
             Vdr vdr = db.Vdrs.Find(id);
             db.Vdrs.Remove(vdr);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         protected override void Dispose(bool disposing)

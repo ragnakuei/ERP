@@ -14,6 +14,12 @@ namespace ERP
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Vdrs",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Vdrs", action = "List", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

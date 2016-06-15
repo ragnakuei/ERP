@@ -2,6 +2,12 @@
 
 @{
     ViewBag.Title = "Edit";
+    //以下五個為使用ToggleCheckBox使用
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/CustomJsCss/ToggleCheckBox/css/bootstrap-toggle.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="~/CustomJsCss/ToggleCheckBox/js/bootstrap-toggle.js"></script>
+    <script src="~/CustomJsCss/ToggleCheckBox/doc/script.js"></script>
 }
 
 <h2>Edit</h2>
@@ -109,7 +115,7 @@
             @Html.LabelFor(model => model.VdrEn, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.VdrEn)
+                    @Html.EditorFor(model => model.VdrEn, new { htmlAttributes = new { @data_toggle = "toggle" } })
                     @Html.ValidationMessageFor(model => model.VdrEn, "", new { @class = "text-danger" })
                 </div>
             </div>

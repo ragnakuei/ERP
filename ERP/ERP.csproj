@@ -215,7 +215,7 @@
     <Content Include="Views\Vdrs\Delete.cshtml" />
     <Content Include="Views\Vdrs\Details.cshtml" />
     <Content Include="Views\Vdrs\Edit.cshtml" />
-    <Content Include="Views\Vdrs\Index.cshtml" />
+    <Content Include="Views\Vdrs\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
