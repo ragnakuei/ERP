@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ERP.Models;
+using PagedList;
 
 namespace ERP.Controllers
 {
@@ -15,68 +16,121 @@ namespace ERP.Controllers
         private Entities db = new Entities();
 
         // GET: Vdrs
-        public ActionResult List(string SortOrder)
+        public ActionResult List(string SortOrder, string Filter, string SearchString,int? page)
         {
+            ViewData["SortOrder"] = SortOrder;
+            //設定ViewData[""]要給View做 querystring
+            ViewData["VdrNo_SortOrder"] = String.IsNullOrEmpty(SortOrder) ? "VdrNo_desc" : "";
+            ViewData["VdrNa_SortOrder"] = SortOrder == "VdrNa" ? "VdrNa_desc" : "VdrNa";
+            ViewData["VdrId_SortOrder"] = SortOrder == "VdrId" ? "VdrId_desc" : "VdrId";
+            ViewData["VdrTel_SortOrder"] = SortOrder == "VdrTel" ? "VdrTel_desc" : "VdrTel";
+            ViewData["VdrRmaTel_SortOrder"] = SortOrder == "VdrRmaTel" ? "VdrRmaTel_desc" : "VdrRmaTel";
+            ViewData["VdrSalNa_SortOrder"] = SortOrder == "VdrSalNa" ? "VdrSalNa_desc" : "VdrSalNa";
+            ViewData["VdrSalTel_SortOrder"] = SortOrder == "VdrSalTel" ? "VdrSalTel_desc" : "VdrSalTel";
+            ViewData["VdrUrl_SortOrder"] = SortOrder == "VdrUrl" ? "VdrUrl_desc" : "VdrUrl";
+            ViewData["VdrAdr_SortOrder"] = SortOrder == "VdrAdr" ? "VdrAdr_desc" : "VdrAdr";
+            ViewData["VdrDtPay_SortOrder"] = SortOrder == "VdrDtPay" ? "VdrDtPay_desc" : "VdrDtPay";
+            
+            if(SearchString != null)
+            { page = 1; }
+            else
+            { SearchString = Filter; }
+
+            ViewData["Filter"] = SearchString;
+
             var vdrs = from s in db.Vdrs select s;
-            switch (SortOrder)
+            if (!string.IsNullOrEmpty(SearchString))
             {
-                case "VdrNa_desc":
-                    vdrs = vdrs.OrderByDescending(s => s.VdrNa);
-                    break;
-                case "VdrId ":
-                    vdrs = vdrs.OrderBy(s => s.VdrId);                    
-                    break;
-                case "VdrId_desc":
-                    vdrs = vdrs.OrderByDescending(s => s.VdrId);
-                    break;
-                case "VdrTel":
-                    vdrs = vdrs.OrderBy(s => s.VdrTel);
-                    break;
-                case "VdrTel_desc ":
-                    vdrs = vdrs.OrderByDescending(s => s.VdrTel);
-                    break;
-                case "VdrRmaTel ":
-                    vdrs = vdrs.OrderBy(s => s.VdrRmaTel);
-                    break;
-                case "VdrRmaTel_desc":
-                    vdrs = vdrs.OrderByDescending(s => s.VdrRmaTel);
-                    break;
-                case "VdrSalNa":
-                    vdrs = vdrs.OrderBy(s => s.VdrSalNa);
-                    break;
-                case "VdrSalNa_desc ":
-                    vdrs = vdrs.OrderByDescending(s => s.VdrSalNa);
-                    break;
-                case "VdrSalTel ":
-                    vdrs = vdrs.OrderBy(s => s.VdrSalTel);
-                    break;
-                case "VdrSalTel_desc":
-                    vdrs = vdrs.OrderByDescending(s => s.VdrSalTel);
-                    break;
-                case "VdrUrl":
-                    vdrs = vdrs.OrderBy(s => s.VdrUrl);
-                    break;
-                case "VdrUrl_desc ":
-                    vdrs = vdrs.OrderByDescending(s => s.VdrUrl);
-                    break;
-                case "VdrAdr":
-                    vdrs = vdrs.OrderBy(s => s.VdrAdr);
-                    break;
-                case "VdrAdr_desc ":
-                    vdrs = vdrs.OrderByDescending(s => s.VdrAdr);
-                    break;
-                case "VdrDtPay":
-                    vdrs = vdrs.OrderBy(s => s.VdrDtPay);
-                    break;
-                case "VdrDtPay_desc ":
-                    vdrs = vdrs.OrderByDescending(s => s.VdrDtPay);
-                    break;
-                default:  //預設就是VdrNa排序
-                    vdrs = vdrs.OrderBy(s=>s.VdrNa);
-                    break;
+                vdrs = vdrs.Where( v => v.VdrNa.Contains(SearchString)
+                                     || v.VdrNo.Contains(SearchString)
+                );
             }
 
-            return View(vdrs);
+            //依照querystring做排序
+            if (SortOrder == "VdrNo_desc")
+            {
+                vdrs = vdrs.OrderByDescending(s => s.VdrNo);
+            }
+            if (SortOrder == "VdrNa")
+            {
+                vdrs = vdrs.OrderBy(s => s.VdrNa);
+            }
+            if (SortOrder == "VdrNa_desc")
+            {
+                vdrs = vdrs.OrderByDescending(s => s.VdrNa);
+            }
+            if (SortOrder == "VdrId")
+            {
+                vdrs = vdrs.OrderBy(s => s.VdrId);
+            }
+            if (SortOrder == "VdrId_desc")
+            {
+                vdrs = vdrs.OrderByDescending(s => s.VdrId);
+            }
+            if (SortOrder == "VdrTel")
+            {
+                vdrs = vdrs.OrderBy(s => s.VdrTel);
+            }
+            if (SortOrder == "VdrTel_desc")
+            {
+                vdrs = vdrs.OrderByDescending(s => s.VdrTel);
+            }
+            if (SortOrder == "VdrRmaTel")
+            {
+                vdrs = vdrs.OrderBy(s => s.VdrRmaTel);
+            }
+            if (SortOrder == "VdrRmaTel_desc")
+            {
+                vdrs = vdrs.OrderByDescending(s => s.VdrRmaTel);
+            }
+            if (SortOrder == "VdrSalNa")
+            {
+                vdrs = vdrs.OrderBy(s => s.VdrSalNa);
+            }
+            if (SortOrder == "VdrSalNa_desc")
+            {
+                vdrs = vdrs.OrderByDescending(s => s.VdrSalNa);
+            }
+            if (SortOrder == "VdrSalTel")
+            {
+                vdrs = vdrs.OrderBy(s => s.VdrSalTel);
+            }
+            if (SortOrder == "VdrSalTel_desc")
+            {
+                vdrs = vdrs.OrderByDescending(s => s.VdrSalTel);
+            }
+            if (SortOrder == "VdrUrl")
+            {
+                vdrs = vdrs.OrderBy(s => s.VdrUrl);
+            }
+            if (SortOrder == "VdrUrl_desc")
+            {
+                vdrs = vdrs.OrderByDescending(s => s.VdrUrl);
+            }
+            if (SortOrder == "VdrAdr")
+            {
+                vdrs = vdrs.OrderBy(s => s.VdrAdr);
+            }
+            if (SortOrder == "VdrAdr_desc")
+            {
+                vdrs = vdrs.OrderByDescending(s => s.VdrAdr);
+            }
+            if (SortOrder == "VdrDtPay")
+            {
+                vdrs = vdrs.OrderBy(s => s.VdrDtPay);
+            }
+            if (SortOrder == "VdrDtPay_desc")
+            {
+                vdrs = vdrs.OrderByDescending(s => s.VdrDtPay);
+            }
+            if (String.IsNullOrEmpty(SortOrder))
+            {
+                vdrs = vdrs.OrderBy(s => s.VdrNo);
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(vdrs.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Vdrs/Details/5

@@ -1,4 +1,7 @@
-﻿@model IEnumerable<ERP.Models.Vdr>
+﻿@*@model IEnumerable<ERP.Models.Vdr>*@
+@model PagedList.IPagedList<ERP.Models.Vdr>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "廠商列表";
@@ -9,50 +12,53 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm("List","Vdrs",FormMethod.Get))
+{
+    <p>
+        Find by 編號/名稱: @Html.TextBox("Filter",(string)ViewData["Filter"])
+        <input type="submit" value="搜尋" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
-            @if (Request.QueryString["SortOrder"] == "VdrNa" || String.IsNullOrEmpty(Request.QueryString["SortOrder"]))
-            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrNa).ToString(), "List", new { SortOrder = "VdrNa_desc" }) }
-            else
-            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrNa).ToString(), "List") }
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrNo).ToString(), "List", new { SortOrder = ViewData["VdrNo_SortOrder"], Filter = ViewData["Filter"] })
         </th>
         <th>
-            @if (Request.QueryString["SortOrder"] == "VdrId")
-            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrId).ToString(), "List", new { SortOrder = "VdrId_desc" }) }
-            else
-            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrId).ToString(), "List", new { SortOrder = "VdrId" }) }
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrNa).ToString(), "List", new { SortOrder = ViewData["VdrNa_SortOrder"], Filter = ViewData["Filter"] })
         </th>
         <th>
-            @if (Request.QueryString["SortOrder"] == "VdrTel")
-            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrTel).ToString(), "List", new { SortOrder = "VdrTel_desc" }) }
-            else
-            { @Html.ActionLink(@Html.DisplayNameFor(model => model.VdrTel).ToString(), "List", new { SortOrder = "VdrTel" }) }
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrId).ToString(), "List", new { SortOrder = ViewData["VdrId_SortOrder"], Filter = ViewData["Filter"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VdrRmaTel)
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrTel).ToString(), "List", new { SortOrder = ViewData["VdrTel_SortOrder"], Filter = ViewData["Filter"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VdrSalNa)
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrRmaTel).ToString(), "List", new { SortOrder = ViewData["VdrRmaTel_SortOrder"], Filter = ViewData["Filter"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VdrSalTel)
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrSalNa).ToString(), "List", new { SortOrder = ViewData["VdrSalNa_SortOrder"], Filter = ViewData["Filter"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VdrUrl)
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrSalTel).ToString(), "List", new { SortOrder = ViewData["VdrSalTel_SortOrder"], Filter = ViewData["Filter"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VdrAdr)
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrUrl).ToString(), "List", new { SortOrder = ViewData["VdrUrl_SortOrder"], Filter = ViewData["Filter"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VdrDtPay)
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrAdr).ToString(), "List", new { SortOrder = ViewData["VdrAdr_SortOrder"], Filter = ViewData["Filter"] })
         </th>
-        <th></th>
+        <th>
+            @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrDtPay).ToString(), "List", new { SortOrder = ViewData["VdrDtPay_SortOrder"], Filter = ViewData["Filter"] })
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VdrNo)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VdrNa)
             </td>
@@ -89,3 +95,9 @@
     }
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("List", new { page, SortOrder = ViewData["SortOrder"], Filter = ViewData["Filter"] }))
+
+
