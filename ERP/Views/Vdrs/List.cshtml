@@ -1,7 +1,32 @@
-﻿@*@model IEnumerable<ERP.Models.Vdr>*@
-@model PagedList.IPagedList<ERP.Models.Vdr>
+﻿@model PagedList.IPagedList<ERP.Models.Vdr>
 @using PagedList.Mvc;
+@using ERP.Helpers;
+
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<style>
+    .ColumnToggleCbx{
+        float:left;
+        margin-left:3px;
+    }
+</style>
+<script>
+    function ColumnToggle(me) {
+        if (document.getElementById(me.id).checked) {
+            var obj = document.getElementsByName(me.id)
+            for (var i = 0; i < obj.length; i++) {
+                //obj[i].style.visibility = "visible"
+                obj[i].style.display = "table-cell"
+            }
+        }
+        else {
+            var obj = document.getElementsByName(me.id)
+            for (var i = 0; i < obj.length; i++) {
+                //obj[i].style.visibility = "hidden"
+                obj[i].style.display = "none"
+            }
+        }
+    }
+</script>
 
 @{
     ViewBag.Title = "廠商列表";
@@ -9,16 +34,81 @@
 
 <h2>廠商列表</h2>
 
+@*是否顯示欄位*@
+<div style="position:absolute;top:55px;left:20vmax">
+    <div class="ColumnToggleCbx" >
+        <input type="checkbox" name="CbxVdrNo" id="VdrNo"  checked onclick="ColumnToggle(this)" />
+        <label for="VdrNo">
+            @Html.DisplayNameFor(model => model.First().VdrNo)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx" >
+        <input type="checkbox" name="CbxVdrNa" id="VdrNa"  checked onclick="ColumnToggle(this)" />
+        <label for="VdrNa">
+            @Html.DisplayNameFor(model => model.First().VdrNa)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx" >
+        <input type="checkbox" name="CbxVdrId" id="VdrId"  checked onclick="ColumnToggle(this)" />
+        <label for="VdrId">
+            @Html.DisplayNameFor(model => model.First().VdrId)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx" >
+        <input type="checkbox" name="CbxVdrTel" id="VdrTel"  checked onclick="ColumnToggle(this)" />
+        <label for="VdrTel">
+            @Html.DisplayNameFor(model => model.First().VdrTel)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx" >
+        <input type="checkbox" name="CbxVdrRmaTel" id="VdrRmaTel"  checked onclick="ColumnToggle(this)" />
+        <label for="VdrRmaTel">
+            @Html.DisplayNameFor(model => model.First().VdrRmaTel)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx" >
+        <input type="checkbox" name="CbxVdrSalNa" id="VdrSalNa"  checked onclick="ColumnToggle(this)" />
+        <label for="VdrSalNa">
+            @Html.DisplayNameFor(model => model.First().VdrSalNa)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx" >
+        <input type="checkbox" name="CbxVdrSalTel" id="VdrSalTel"  checked onclick="ColumnToggle(this)" />
+        <label for="VdrSalTel">
+            @Html.DisplayNameFor(model => model.First().VdrSalTel)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx" >
+        <input type="checkbox" name="CbxVdrUrl" id="VdrUrl"  checked onclick="ColumnToggle(this)" />
+        <label for="VdrUrl">
+            @Html.DisplayNameFor(model => model.First().VdrUrl)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx" >
+        <input type="checkbox" name="CbxVdrAdr" id="VdrAdr"  checked onclick="ColumnToggle(this)" />
+        <label for="VdrAdr">
+            @Html.DisplayNameFor(model => model.First().VdrAdr)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx" >
+        <input type="checkbox" name="CbxVdrDtPay" id="VdrDtPay"  checked onclick="ColumnToggle(this)" />
+        <label for="VdrDtPay">
+            @Html.DisplayNameFor(model => model.First().VdrDtPay)
+        </label>
+    </div>
+</div>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@using (Html.BeginForm("List","Vdrs",FormMethod.Get))
+@using (Html.BeginForm("List", "Vdrs", FormMethod.Get))
 {
     <p>
-        Find by 編號/名稱: @Html.TextBox("Filter",(string)ViewData["Filter"])
+        Find by 編號/名稱: @Html.TextBox("Filter", (string)ViewData["Filter"])
         <input type="submit" value="搜尋" />
     </p>
 }
+
 <table class="table">
     <tr>
         <th>
@@ -57,10 +147,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.VdrNo)
+                @Html.HightlightKeyWord(Html.DisplayFor(modelItem => item.VdrNo).ToHtmlString(), (string)ViewData["Filter"], "highlight")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.VdrNa)
+                @Html.HightlightKeyWord(Html.DisplayFor(modelItem => item.VdrNa).ToHtmlString(), (string)ViewData["Filter"], "highlight")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VdrId)
@@ -93,7 +183,6 @@
             </td>
         </tr>
     }
-
 </table>
 
 <br />
