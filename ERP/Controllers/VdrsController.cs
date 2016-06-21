@@ -16,7 +16,7 @@ namespace ERP.Controllers
         private Entities db = new Entities();
 
         // GET: Vdrs
-        public ActionResult List(string SortOrder, string Filter, string SearchString,int? page)
+        public ActionResult List(string SortOrder, string Filter, string SearchString, int? page)
         {
             ViewData["SortOrder"] = SortOrder;
             //設定ViewData[""]要給View做 querystring
@@ -30,8 +30,8 @@ namespace ERP.Controllers
             ViewData["VdrUrl_SortOrder"] = SortOrder == "VdrUrl" ? "VdrUrl_desc" : "VdrUrl";
             ViewData["VdrAdr_SortOrder"] = SortOrder == "VdrAdr" ? "VdrAdr_desc" : "VdrAdr";
             ViewData["VdrDtPay_SortOrder"] = SortOrder == "VdrDtPay" ? "VdrDtPay_desc" : "VdrDtPay";
-            
-            if(SearchString != null)
+
+            if (SearchString != null)
             { page = 1; }
             else
             { SearchString = Filter; }
@@ -41,8 +41,8 @@ namespace ERP.Controllers
             var vdrs = from s in db.Vdrs select s;
             if (!string.IsNullOrEmpty(SearchString))
             {
-                vdrs = vdrs.Where( v => v.VdrNa.Contains(SearchString)
-                                     || v.VdrNo.Contains(SearchString)
+                vdrs = vdrs.Where(v => v.VdrNa.Contains(SearchString)
+                                    || v.VdrNo.Contains(SearchString)
                 );
             }
 
@@ -241,5 +241,6 @@ namespace ERP.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
