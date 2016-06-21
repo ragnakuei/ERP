@@ -5,140 +5,64 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <style>
     .ColumnToggleCbx{
-        float:left;
-        margin-left:3px;
+        
+    }
+
+    .HighLight{
+        color:red;
     }
 </style>
-<script>
-    function ColumnToggle(me) {
-        if (document.getElementById(me.id).checked) {
-            var obj = document.getElementsByName(me.id)
-            for (var i = 0; i < obj.length; i++) {
-                //obj[i].style.visibility = "visible"
-                obj[i].style.display = "table-cell"
-            }
-        }
-        else {
-            var obj = document.getElementsByName(me.id)
-            for (var i = 0; i < obj.length; i++) {
-                //obj[i].style.visibility = "hidden"
-                obj[i].style.display = "none"
-            }
-        }
-    }
-</script>
 
 @{
-    ViewBag.Title = "廠商列表";
+    string Title = "廠商列表";
+    ViewBag.Title = Title;
 }
 
-<h2>廠商列表</h2>
+<h2>@Title</h2>
 
-@*是否顯示欄位*@
-<div style="position:absolute;top:55px;left:20vmax">
-    <div class="ColumnToggleCbx" >
-        <input type="checkbox" name="CbxVdrNo" id="VdrNo"  checked onclick="ColumnToggle(this)" />
-        <label for="VdrNo">
-            @Html.DisplayNameFor(model => model.First().VdrNo)
-        </label>
-    </div>
-    <div class="ColumnToggleCbx" >
-        <input type="checkbox" name="CbxVdrNa" id="VdrNa"  checked onclick="ColumnToggle(this)" />
-        <label for="VdrNa">
-            @Html.DisplayNameFor(model => model.First().VdrNa)
-        </label>
-    </div>
-    <div class="ColumnToggleCbx" >
-        <input type="checkbox" name="CbxVdrId" id="VdrId"  checked onclick="ColumnToggle(this)" />
-        <label for="VdrId">
-            @Html.DisplayNameFor(model => model.First().VdrId)
-        </label>
-    </div>
-    <div class="ColumnToggleCbx" >
-        <input type="checkbox" name="CbxVdrTel" id="VdrTel"  checked onclick="ColumnToggle(this)" />
-        <label for="VdrTel">
-            @Html.DisplayNameFor(model => model.First().VdrTel)
-        </label>
-    </div>
-    <div class="ColumnToggleCbx" >
-        <input type="checkbox" name="CbxVdrRmaTel" id="VdrRmaTel"  checked onclick="ColumnToggle(this)" />
-        <label for="VdrRmaTel">
-            @Html.DisplayNameFor(model => model.First().VdrRmaTel)
-        </label>
-    </div>
-    <div class="ColumnToggleCbx" >
-        <input type="checkbox" name="CbxVdrSalNa" id="VdrSalNa"  checked onclick="ColumnToggle(this)" />
-        <label for="VdrSalNa">
-            @Html.DisplayNameFor(model => model.First().VdrSalNa)
-        </label>
-    </div>
-    <div class="ColumnToggleCbx" >
-        <input type="checkbox" name="CbxVdrSalTel" id="VdrSalTel"  checked onclick="ColumnToggle(this)" />
-        <label for="VdrSalTel">
-            @Html.DisplayNameFor(model => model.First().VdrSalTel)
-        </label>
-    </div>
-    <div class="ColumnToggleCbx" >
-        <input type="checkbox" name="CbxVdrUrl" id="VdrUrl"  checked onclick="ColumnToggle(this)" />
-        <label for="VdrUrl">
-            @Html.DisplayNameFor(model => model.First().VdrUrl)
-        </label>
-    </div>
-    <div class="ColumnToggleCbx" >
-        <input type="checkbox" name="CbxVdrAdr" id="VdrAdr"  checked onclick="ColumnToggle(this)" />
-        <label for="VdrAdr">
-            @Html.DisplayNameFor(model => model.First().VdrAdr)
-        </label>
-    </div>
-    <div class="ColumnToggleCbx" >
-        <input type="checkbox" name="CbxVdrDtPay" id="VdrDtPay"  checked onclick="ColumnToggle(this)" />
-        <label for="VdrDtPay">
-            @Html.DisplayNameFor(model => model.First().VdrDtPay)
-        </label>
-    </div>
-</div>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 @using (Html.BeginForm("List", "Vdrs", FormMethod.Get))
 {
     <p>
+        @Html.ActionLink("新增廠商", "Create")
+        <text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
         Find by 編號/名稱: @Html.TextBox("Filter", (string)ViewData["Filter"])
         <input type="submit" value="搜尋" />
     </p>
 }
 
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+@Html.PagedListPager(Model, page => Url.Action("List", new { page, SortOrder = ViewData["SortOrder"], Filter = ViewData["Filter"] }))
+
 <table class="table">
     <tr>
-        <th>
+        <th name="@Html.IdFor(model => model.First().VdrNo)">
             @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrNo).ToString(), "List", new { SortOrder = ViewData["VdrNo_SortOrder"], Filter = ViewData["Filter"] })
         </th>
-        <th>
+        <th name="@Html.IdFor(model => model.First().VdrNa)">
             @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrNa).ToString(), "List", new { SortOrder = ViewData["VdrNa_SortOrder"], Filter = ViewData["Filter"] })
         </th>
-        <th>
+        <th name="@Html.IdFor(model => model.First().VdrId)">
             @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrId).ToString(), "List", new { SortOrder = ViewData["VdrId_SortOrder"], Filter = ViewData["Filter"] })
         </th>
-        <th>
+        <th name="@Html.IdFor(model => model.First().VdrTel)">
             @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrTel).ToString(), "List", new { SortOrder = ViewData["VdrTel_SortOrder"], Filter = ViewData["Filter"] })
         </th>
-        <th>
+        <th name="@Html.IdFor(model => model.First().VdrRmaTel)">
             @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrRmaTel).ToString(), "List", new { SortOrder = ViewData["VdrRmaTel_SortOrder"], Filter = ViewData["Filter"] })
         </th>
-        <th>
+        <th name="@Html.IdFor(model => model.First().VdrSalNa)">
             @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrSalNa).ToString(), "List", new { SortOrder = ViewData["VdrSalNa_SortOrder"], Filter = ViewData["Filter"] })
         </th>
-        <th>
+        <th name="@Html.IdFor(model => model.First().VdrSalTel)">
             @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrSalTel).ToString(), "List", new { SortOrder = ViewData["VdrSalTel_SortOrder"], Filter = ViewData["Filter"] })
         </th>
-        <th>
+        <th name="@Html.IdFor(model => model.First().VdrUrl)">
             @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrUrl).ToString(), "List", new { SortOrder = ViewData["VdrUrl_SortOrder"], Filter = ViewData["Filter"] })
         </th>
-        <th>
+        <th name="@Html.IdFor(model => model.First().VdrAdr)">
             @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrAdr).ToString(), "List", new { SortOrder = ViewData["VdrAdr_SortOrder"], Filter = ViewData["Filter"] })
         </th>
-        <th>
+        <th name="@Html.IdFor(model => model.First().VdrDtPay)">
             @Html.ActionLink(Html.DisplayNameFor(model => model.First().VdrDtPay).ToString(), "List", new { SortOrder = ViewData["VdrDtPay_SortOrder"], Filter = ViewData["Filter"] })
         </th>
     </tr>
@@ -146,34 +70,34 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.HightlightKeyWord(Html.DisplayFor(modelItem => item.VdrNo).ToHtmlString(), (string)ViewData["Filter"], "highlight")
+            <td name="@Html.IdFor(model => model.First().VdrNo)">
+                @Html.HightlightKeyWord(Html.DisplayFor(modelItem => item.VdrNo).ToHtmlString(), (string)ViewData["Filter"], "HighLight")
             </td>
-            <td>
-                @Html.HightlightKeyWord(Html.DisplayFor(modelItem => item.VdrNa).ToHtmlString(), (string)ViewData["Filter"], "highlight")
+            <td name="@Html.IdFor(model => model.First().VdrNa)">
+                @Html.HightlightKeyWord(Html.DisplayFor(modelItem => item.VdrNa).ToHtmlString(), (string)ViewData["Filter"], "HighLight")
             </td>
-            <td>
+            <td name="@Html.IdFor(model => model.First().VdrId)">
                 @Html.DisplayFor(modelItem => item.VdrId)
             </td>
-            <td>
+            <td name="@Html.IdFor(model => model.First().VdrTel)">
                 @Html.DisplayFor(modelItem => item.VdrTel)
             </td>
-            <td>
+            <td name="@Html.IdFor(model => model.First().VdrRmaTel)">
                 @Html.DisplayFor(modelItem => item.VdrRmaTel)
             </td>
-            <td>
+            <td name="@Html.IdFor(model => model.First().VdrSalNa)">
                 @Html.DisplayFor(modelItem => item.VdrSalNa)
             </td>
-            <td>
+            <td name="@Html.IdFor(model => model.First().VdrSalTel)">
                 @Html.DisplayFor(modelItem => item.VdrSalTel)
             </td>
-            <td>
+            <td name="@Html.IdFor(model => model.First().VdrUrl)">
                 @Html.DisplayFor(modelItem => item.VdrUrl)
             </td>
-            <td>
+            <td name="@Html.IdFor(model => model.First().VdrAdr)">
                 @Html.DisplayFor(modelItem => item.VdrAdr)
             </td>
-            <td>
+            <td name="@Html.IdFor(model => model.First().VdrDtPay)">
                 @Html.DisplayFor(modelItem => item.VdrDtPay)
             </td>
             <td>
@@ -185,8 +109,87 @@
     }
 </table>
 
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 @Html.PagedListPager(Model, page => Url.Action("List", new { page, SortOrder = ViewData["SortOrder"], Filter = ViewData["Filter"] }))
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
+@*Toggle欄位*@
+<div style="position:absolute;top:262px;right:0px">
+    <div class="ColumnToggleCbx">
+        <input type="checkbox" name="CbxVdrNo" id="VdrNo" checked onclick="ColumnToggle(this)" />
+        <label for="VdrNo">
+            @Html.DisplayNameFor(model => model.First().VdrNo)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx">
+        <input type="checkbox" name="CbxVdrNa" id="VdrNa" checked onclick="ColumnToggle(this)" />
+        <label for="VdrNa">
+            @Html.DisplayNameFor(model => model.First().VdrNa)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx">
+        <input type="checkbox" name="CbxVdrId" id="VdrId" checked onclick="ColumnToggle(this)" />
+        <label for="VdrId">
+            @Html.DisplayNameFor(model => model.First().VdrId)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx">
+        <input type="checkbox" name="CbxVdrTel" id="VdrTel" checked onclick="ColumnToggle(this)" />
+        <label for="VdrTel">
+            @Html.DisplayNameFor(model => model.First().VdrTel)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx">
+        <input type="checkbox" name="CbxVdrRmaTel" id="VdrRmaTel" checked onclick="ColumnToggle(this)" />
+        <label for="VdrRmaTel">
+            @Html.DisplayNameFor(model => model.First().VdrRmaTel)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx">
+        <input type="checkbox" name="CbxVdrSalNa" id="VdrSalNa" checked onclick="ColumnToggle(this)" />
+        <label for="VdrSalNa">
+            @Html.DisplayNameFor(model => model.First().VdrSalNa)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx">
+        <input type="checkbox" name="CbxVdrSalTel" id="VdrSalTel" checked onclick="ColumnToggle(this)" />
+        <label for="VdrSalTel">
+            @Html.DisplayNameFor(model => model.First().VdrSalTel)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx">
+        <input type="checkbox" name="CbxVdrUrl" id="VdrUrl" checked onclick="ColumnToggle(this)" />
+        <label for="VdrUrl">
+            @Html.DisplayNameFor(model => model.First().VdrUrl)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx">
+        <input type="checkbox" name="CbxVdrAdr" id="VdrAdr" checked onclick="ColumnToggle(this)" />
+        <label for="VdrAdr">
+            @Html.DisplayNameFor(model => model.First().VdrAdr)
+        </label>
+    </div>
+    <div class="ColumnToggleCbx">
+        <input type="checkbox" name="CbxVdrDtPay" id="VdrDtPay" checked onclick="ColumnToggle(this)" />
+        <label for="VdrDtPay">
+            @Html.DisplayNameFor(model => model.First().VdrDtPay)
+        </label>
+    </div>
+</div>
 
+<script>
+    //顯示或隱藏欄位
+    function ColumnToggle(me) {
+        if (document.getElementById(me.id).checked) {
+            var obj = document.getElementsByName(me.id)
+            for (var i = 0; i < obj.length; i++) {
+                obj[i].style.display = "table-cell"
+            }
+        }
+        else {
+            var obj = document.getElementsByName(me.id)
+            for (var i = 0; i < obj.length; i++) {
+                obj[i].style.display = "none"
+            }
+        }
+    }
+</script>
