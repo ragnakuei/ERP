@@ -4,12 +4,11 @@
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <style>
-    .ColumnToggleCbx{
-        
+    .ColumnToggleCbx {
     }
 
-    .HighLight{
-        color:red;
+    .HighLight {
+        color: red;
     }
 </style>
 
@@ -176,9 +175,11 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
     </div>
 </div>
 
+<script src="~/scripts/jquery-1.10.2.js"></script>
 <script>
     //顯示或隱藏欄位
     function ColumnToggle(me) {
+        ChangeCbx(me)
         if (document.getElementById(me.id).checked) {
             var obj = document.getElementsByName(me.id)
             for (var i = 0; i < obj.length; i++) {
@@ -192,4 +193,203 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
             }
         }
     }
+
+
+    //設定CheckBox的狀態
+    function SetCbx() {
+        var CbxToggleNoResult = GetCbxFromCookie()
+        if ((CbxToggleNoResult & parseInt('0000000001', 2)) == parseInt('0000000001', 2)) {
+            document.getElementById('VdrNo').checked = true
+        }
+        else {
+            document.getElementById('VdrNo').checked = false
+        }
+        ColumnToggle(document.getElementById('VdrNo'))
+
+        if ((CbxToggleNoResult & parseInt('0000000010', 2)) == parseInt('0000000010', 2)) {
+            document.getElementById('VdrNa').checked = true
+        }
+        else {
+            document.getElementById('VdrNa').checked = false
+        }
+
+        if ((CbxToggleNoResult & parseInt('0000000100', 2)) == parseInt('0000000100', 2)) {
+            document.getElementById('VdrId').checked = true
+        }
+        else {
+            document.getElementById('VdrId').checked = false
+        }
+
+        if ((CbxToggleNoResult & parseInt('0000001000', 2)) == parseInt('0000001000', 2)) {
+            document.getElementById('VdrTel').checked = true
+        }
+        else {
+            document.getElementById('VdrTel').checked = false
+        }
+
+        if ((CbxToggleNoResult & parseInt('0000010000', 2)) == parseInt('0000010000', 2)) {
+            document.getElementById('VdrRmaTel').checked = true
+        }
+        else {
+            document.getElementById('VdrRmaTel').checked = false
+        }
+
+        if ((CbxToggleNoResult & parseInt('0000100000', 2)) == parseInt('0000100000', 2)) {
+            document.getElementById('VdrSalNa').checked = true
+        }
+        else {
+            document.getElementById('VdrSalNa').checked = false
+        }
+
+        if ((CbxToggleNoResult & parseInt('0001000000', 2)) == parseInt('0001000000', 2)) {
+            document.getElementById('VdrSalTel').checked = true
+        }
+        else {
+            document.getElementById('VdrSalTel').checked = false
+        }
+
+        if ((CbxToggleNoResult & parseInt('0010000000', 2)) == parseInt('0010000000', 2)) {
+            document.getElementById('VdrUrl').checked = true
+        }
+        else {
+            document.getElementById('VdrUrl').checked = false
+        }
+
+        if ((CbxToggleNoResult & parseInt('0100000000', 2)) == parseInt('0100000000', 2)) {
+            document.getElementById('VdrAdr').checked = true
+        }
+        else {
+            document.getElementById('VdrAdr').checked = false
+        }
+
+        if ((CbxToggleNoResult & parseInt('1000000000', 2)) == parseInt('1000000000', 2)) {
+            document.getElementById('VdrDtPay').checked = true
+        }
+        else {
+            document.getElementById('VdrDtPay').checked = false
+        }
+    }
+
+    //點選CheckBox時，將現況同步至cookie中
+    function ChangeCbx(me) {
+        var CbxToggleNoResult = GetCbxFromCookie()
+
+        if (me.id == 'VdrNo') {
+            if (document.getElementById(me.id).checked) {
+                CbxToggleNoResult = CbxToggleNoResult | parseInt('0000000001', 2)
+            }
+            else {
+                CbxToggleNoResult = CbxToggleNoResult & parseInt('1111111110', 2)
+            }
+        }
+        else if (me.id == 'VdrNa') {
+            if (document.getElementById(me.id).checked) {
+                CbxToggleNoResult = CbxToggleNoResult | parseInt('0000000010', 2)
+            }
+            else {
+                CbxToggleNoResult = CbxToggleNoResult & parseInt('1111111101', 2)
+            }
+        }
+        else if (me.id == 'VdrId') {
+            if (document.getElementById(me.id).checked) {
+                CbxToggleNoResult = CbxToggleNoResult | parseInt('0000000100', 2)
+            }
+            else {
+                CbxToggleNoResult = CbxToggleNoResult & parseInt('1111111011', 2)
+            }
+        }
+        else if (me.id == 'VdrTel') {
+            if (document.getElementById(me.id).checked) {
+                CbxToggleNoResult = CbxToggleNoResult | parseInt('0000001000', 2)
+            }
+            else {
+                CbxToggleNoResult = CbxToggleNoResult & parseInt('1111110111', 2)
+            }
+        }
+        else if (me.id == 'VdrRmaTel') {
+            if (document.getElementById(me.id).checked) {
+                CbxToggleNoResult = CbxToggleNoResult | parseInt('0000010000', 2)
+            }
+            else {
+                CbxToggleNoResult = CbxToggleNoResult & parseInt('1111101111', 2)
+            }
+        }
+        else if (me.id == 'VdrSalNa') {
+            if (document.getElementById(me.id).checked) {
+                CbxToggleNoResult = CbxToggleNoResult | parseInt('0000100000', 2)
+            }
+            else {
+                CbxToggleNoResult = CbxToggleNoResult & parseInt('1111011111', 2)
+            }
+        }
+        else if (me.id == 'VdrSalTel') {
+            if (document.getElementById(me.id).checked) {
+                CbxToggleNoResult = CbxToggleNoResult | parseInt('0001000000', 2)
+            }
+            else {
+                CbxToggleNoResult = CbxToggleNoResult & parseInt('1110111111', 2)
+            }
+        }
+        else if (me.id == 'VdrUrl') {
+            if (document.getElementById(me.id).checked) {
+                CbxToggleNoResult = CbxToggleNoResult | parseInt('0010000000', 2)
+            }
+            else {
+                CbxToggleNoResult = CbxToggleNoResult & parseInt('1101111111', 2)
+            }
+        }
+        else if (me.id == 'VdrAdr') {
+            if (document.getElementById(me.id).checked) {
+                CbxToggleNoResult = CbxToggleNoResult | parseInt('0100000000', 2)
+            }
+            else {
+                CbxToggleNoResult = CbxToggleNoResult & parseInt('1011111111', 2)
+            }
+        }
+        else if (me.id == 'VdrDtPay') {
+            if (document.getElementById(me.id).checked) {
+                CbxToggleNoResult = CbxToggleNoResult | parseInt('1000000000', 2)
+            }
+            else {
+                CbxToggleNoResult = CbxToggleNoResult & parseInt('0111111111', 2)
+            }
+        }
+
+        document.cookie = 'Cbx=' + CbxToggleNoResult
+    }
+
+    //從cookie中讀出值
+    function GetCbxFromCookie() {
+        var cookies = document.cookie.split(';')
+        var cs
+        for (var i = 0; i < cookies.length; i++) {
+            cs = cookies[i]
+            //確認是否找到對應的cookie
+            if (cs.includes('Cbx')) {
+                //找到對應的cookie(Cbx=1111111111)後，將值取出
+                var CbxResult = cs.split('=')[1]
+                //找到Cbx=後，如果=右邊是空值，就給定初始值
+                if (CbxResult == '') {
+                    return parseInt('1111111111', 2)
+                }
+                else {
+                    return CbxResult
+                }
+                break
+            }
+            else {
+                if (i == cookies.length - 1) {
+                    //未給定cookie的值，從這邊給定該cookie的初始值
+                    return parseInt('1111111111', 2)
+                }
+            }
+        }
+    }
+
+    //每次讀取頁面時，就會執行設定CheckBox的動作
+    $(document).ready(function () {
+        SetCbx()
+
+    });
+
 </script>
